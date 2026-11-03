@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Burrow Bench",
+      "hasCanvas": false,
+      "bodyTextLen": 11246,
+      "bodyTextHash": "62a49dfd74811fd25fe68cca3d38364c1fd478a286e8503cac817444f7681be7",
+      "bodyTextPrefix": "Burrow Bench Raising guide and hutch plans Two droppings Hutch p",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Burrow Bench",
+      "hasCanvas": false,
+      "bodyTextLen": 11246,
+      "bodyTextHash": "62a49dfd74811fd25fe68cca3d38364c1fd478a286e8503cac817444f7681be7",
+      "bodyTextPrefix": "Burrow Bench Raising guide and hutch plans Two droppings Hutch p",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

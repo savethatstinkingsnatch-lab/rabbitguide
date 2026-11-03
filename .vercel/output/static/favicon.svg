@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Burrow Bench">
+  <rect width="32" height="32" rx="7" fill="#2a5340"/>
+  <g fill="#f3eee4">
+    <rect x="9" y="4" width="5.2" height="13" rx="2.6"/>
+    <rect x="17.8" y="4" width="5.2" height="13" rx="2.6"/>
+    <circle cx="16" cy="20.4" r="8.2"/>
+  </g>
+  <rect x="10.5" y="6" width="2.2" height="7.2" rx="1.1" fill="#b24a28"/>
+  <rect x="19.3" y="6" width="2.2" height="7.2" rx="1.1" fill="#b24a28"/>
+  <circle cx="13.2" cy="19.4" r="1.15" fill="#1c2419"/>
+  <circle cx="18.8" cy="19.4" r="1.15" fill="#1c2419"/>
+</svg>

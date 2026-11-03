@@ -1,0 +1,40 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Burrow Bench",
+      "hasCanvas": false,
+      "bodyTextLen": 11233,
+      "bodyTextHash": "b3c2427d05041dde7cf3a778a3aa99a3f169671d3165c02d3551192504934e42",
+      "bodyTextPrefix": "Burrow Bench Raising guide and hutch plans Two droppings Hutch p",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Burrow Bench",
+      "hasCanvas": false,
+      "bodyTextLen": 11203,
+      "bodyTextHash": "dd7e85edc6cb4941faea82015bbb2e269fc900dbc6c323daec932d77432a4739",
+      "bodyTextPrefix": "Burrow Bench Two droppings Hutch plans Raising Bench log Quarter",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": true,
+  "baselineReasons": [
+    "mobile: body text replaced (similar length, page start changed)"
+  ]
+}

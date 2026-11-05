@@ -2,8 +2,8 @@ import { i as __toESM, n as __exportAll } from "../_runtime.mjs";
 import { K as require_react, _ as createFileRoute, b as require_jsx_runtime, d as Scripts, f as HeadContent, g as lazyRouteComponent, h as Outlet, m as createRouter, v as createRootRoute, y as useRouter } from "../_libs/@tanstack/react-router+[...].mjs";
 import { t as TriangleAlert } from "../_libs/lucide-react.mjs";
 import { a as union, i as string, n as number, r as object, t as literal } from "../_libs/zod.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-CbBNxEUD.js
-var router_CbBNxEUD_exports = /* @__PURE__ */ __exportAll({ getRouter: () => getRouter });
+//#region node_modules/.nitro/vite/services/ssr/assets/router-BknHWAJG.js
+var router_BknHWAJG_exports = /* @__PURE__ */ __exportAll({ getRouter: () => getRouter });
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var FALLBACK_MESSAGE = "An unexpected error occurred. Try reloading the page.";
@@ -331,8 +331,8 @@ function PreviewHostBridge() {
 	}, [router]);
 	return null;
 }
-var styles_default = "/assets/styles-5bLBB1Ey.css";
-var APP_NAME = "Burrow Bench";
+var styles_default = "/assets/styles-2Jzp_j60.css";
+var APP_NAME = "Rabbits: Burrow Bench";
 var Route$1 = createRootRoute({
 	head: () => ({
 		meta: [
@@ -344,7 +344,7 @@ var Route$1 = createRootRoute({
 			{ title: APP_NAME },
 			{
 				name: "description",
-				content: "A rabbit raising guide and hutch plans: quarter-inch mesh floors, half-inch chicken wire, and a dropping tray under the cage."
+				content: "A free rabbit raising guide and hutch plans: quarter-inch mesh floors, 1/2 by 1 inch welded wire, and a dropping tray under the cage."
 			},
 			{
 				name: "theme-color",
@@ -395,7 +395,7 @@ var Route$1 = createRootRoute({
 		] })]
 	})
 });
-var $$splitComponentImporter = () => import("./routes-BR7ZBX_D.mjs");
+var $$splitComponentImporter = () => import("./routes-6JcGPCSQ.mjs");
 var rootRouteChildren = { IndexRoute: createFileRoute("/")({ component: lazyRouteComponent($$splitComponentImporter, "component") }).update({
 	id: "/",
 	path: "/",
@@ -410,4 +410,4 @@ function getRouter() {
 	});
 }
 //#endregion
-export { getRouter, router_CbBNxEUD_exports as t };
+export { getRouter, router_BknHWAJG_exports as t };

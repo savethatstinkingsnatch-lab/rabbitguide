@@ -202,9 +202,9 @@ export function materials(m: HutchModel): ShopLine[] {
         "19 gauge, galvanized. Floor only. Fold cut edges under or trap them under a batten. Smooth side up.",
     },
     {
-      item: "1/2 in chicken wire",
+      item: "1/2 × 1 in welded wire",
       qty: `${wireSq} sq ft`,
-      detail: `Walls and the wire ceiling. About ${wireFt} ft of a 36 in roll, waste included. Stretch it drum tight.`,
+      detail: `Walls and the wire ceiling. Stronger than chicken wire. About ${wireFt} ft of a 36 in roll, waste included. Stretch it drum tight.`,
     },
     {
       item: "Dropping tray",
@@ -296,9 +296,9 @@ export const BUILD_STEPS = [
   "Joists every 12 inches. Quarter-inch mesh sags without them, and a sag becomes a puddle.",
   "Staple 1/4 in hardware cloth on top of the joists, smooth side up. Fold every cut edge under or cover it with a 1×2 batten.",
   "Screw cleats 3 inches below the mesh, open at the front. Slide the empty tray in and out before a rabbit ever sees it.",
-  "Frame the walls and staple 1/2 in chicken wire on the outside, then the wire ceiling the same way. Drum tight. Batten every edge.",
+  "Frame the walls and staple 1/2 × 1 in welded wire on the outside, then the wire ceiling the same way. Drum tight. Batten every edge.",
   "Hang the door on two hinges. The latch needs a thumb. Leave no gap a kit can put a head through.",
-  "Roof over the wire, with a vent gap at the eaves and overhang so rain does not blow through the chicken wire.",
+  "Roof over the wire, with a vent gap at the eaves and overhang so rain does not blow through the welded wire.",
   "Make the resting board, and a second one to swap in. Cover about a third of the floor. A full wood floor puts you back to scraping.",
 ];
 
@@ -307,8 +307,8 @@ export const KINDLE_STEP =
 
 export const PARTS: { id: PartId; label: string }[] = [
   { id: "floor", label: "1/4 in floor" },
-  { id: "sides", label: "1/2 in sides" },
-  { id: "top", label: "1/2 in top" },
+  { id: "sides", label: "1/2 × 1 sides" },
+  { id: "top", label: "1/2 × 1 top" },
   { id: "tray", label: "Dropping tray" },
   { id: "rest", label: "Resting board" },
   { id: "roof", label: "Weather roof" },
@@ -319,23 +319,22 @@ export const PART_COPY: Record<PartId, { title: string; body: string[] }> = {
   floor: {
     title: "Quarter-inch mesh, and nothing wider",
     body: [
-      "The floor is 1/4 inch hardware cloth, 19 gauge, galvanized. That is the shop name for the mesh. Half-inch chicken wire is the wrong roll down here: a kit can put a foot through it, and pellets hang up in the hex.",
+      "The floor is 1/4 inch hardware cloth, 19 gauge, galvanized. That is the shop name for the mesh. 1/2 by 1 inch wire is the wrong roll down here: a kit can put a foot through it, and pellets hang up.",
       "Staple it on top of joists every 12 inches. Pitch the back 1/4 inch lower than the front so urine follows the pellets instead of pooling in a belly in the cloth.",
       "Smooth side up. Every cut end folded under or trapped under a batten. A point that can catch a heel will catch a heel. When the galvanizing flakes and rusts, replace the panel. Do not paint a floor they will chew.",
     ],
   },
   sides: {
-    title: "Half-inch chicken wire on the walls",
+    title: "1/2 by 1 inch welded wire on the walls",
     body: [
-      "The sides are 1/2 inch chicken wire, stretched on the outside of the 2×2 frame and battened so a nose cannot peel a staple. It gives air and a view. A solid box does not.",
-      "Chicken wire keeps a rabbit in. It does not keep a raccoon out. A determined raccoon unzips it. If you have raccoons, dogs, or foxes, build this same frame with 1/2 inch welded wire and a latch that needs a thumb. The floor, the tray, and the roof stay as drawn.",
+      "Sides and top are 1/2 by 1 inch welded wire. It is stronger than chicken wire and keeps raccoons, dogs, and foxes out. Stretch it on the outside of the 2×2 frame and batten every edge a nose can peel. It still gives air and a view. Use a latch that needs a thumb.",
       "Adults of breeding age do not share a wire wall. They will breed through it, or fight through it. The side-by-side plan uses a solid plywood divider for that reason.",
     ],
   },
   top: {
-    title: "Half-inch chicken wire for the ceiling",
+    title: "1/2 by 1 inch welded wire for the ceiling",
     body: [
-      "The ceiling of the cage is 1/2 inch chicken wire, the same roll as the walls. It stops a hop into the roof framing and, if something pulls the weather roof off, it is the last thing between a rabbit and a hawk.",
+      "The ceiling of the cage is 1/2 by 1 inch welded wire, the same roll as the walls. It stops a hop into the roof framing and, if something pulls the weather roof off, it is the last thing between a rabbit and a hawk.",
       "Wire is not a roof. Rain beads on it and noon sun turns it into a broiler. The solid roof sits above this wire with a vent gap so heat can leave.",
       "Hang the water where they can drink without pressing their head into the ceiling all day. A bottle that drips onto the mesh is a wet floor, which is how sore hocks start.",
     ],
@@ -360,8 +359,8 @@ export const PART_COPY: Record<PartId, { title: string; body: string[] }> = {
   roof: {
     title: "A real roof over the wire",
     body: [
-      "The sheet draws a gable along the length, metal or shingles, with overhang so rain does not blow straight through the chicken wire. A shed roof is just as honest if you would rather not cut a ridge. Keep the wire ceiling either way.",
-      "Shade is not optional. Rabbits die of heat long before they die of cold. Above about 85°F, frozen bottles and moving air matter more than another scoop of feed. A wire top in full sun is not a roof.",
+      "The sheet draws a gable along the length, metal or shingles, with overhang so rain does not blow straight through the welded wire. A shed roof is just as honest if you would rather not cut a ridge. Keep the wire ceiling either way.",
+      "Shade is not optional. Rabbits die of heat long before they die of cold. Above about 80°F, frozen bottles and moving air matter more than another scoop of feed. A wire top in full sun is not a roof.",
       "Cold they can take if they are dry, out of the wind, and buried in hay. Wet plus wind is the killer, not the thermometer.",
     ],
   },
@@ -414,7 +413,7 @@ export const FALL_STEPS = [
   },
 ];
 
-export const CHAPTERS: { title: string; paragraphs: string[]; bullets?: string[] }[] = [
+export const CHAPTERS: { id?: string; title: string; paragraphs: string[]; bullets?: string[] }[] = [
   {
     title: "Hay first, then a measured pellet",
     paragraphs: [
@@ -427,7 +426,7 @@ export const CHAPTERS: { title: string; paragraphs: string[]; bullets?: string[]
     title: "Water, weather, and the hours you actually show up",
     paragraphs: [
       "Fresh water every day. In a freeze, swap bottles or break the ice in a crock morning and night. In heat, a second check is not fussiness.",
-      "Above about 85°F, get the hutch into shade, freeze a bottle, and give them a cool rest — the board, or a tile you can spare. Below freezing they are fine if the coat is dry and the wind cannot cut through a solid back. Stuff extra hay in. Do not close the hutch into an airtight box.",
+      "Above about 80°F, rabbits are in danger. Get the hutch into deep shade, give them frozen water bottles and a cool tile, and keep air moving. Signs of heatstroke: fast breathing, a wet nose, a limp or floppy body, very hot ears. Move the rabbit somewhere cool, wet the ears with cool (not ice-cold) water, and call a vet right away. Never dunk a rabbit in ice water. Below freezing they are fine if the coat is dry and the wind cannot cut through a solid back. Stuff extra hay in. Do not close the hutch into an airtight box.",
     ],
   },
   {
@@ -436,6 +435,7 @@ export const CHAPTERS: { title: string; paragraphs: string[]; bullets?: string[]
       "Wait until a doe has her adult frame: about 6 months for small and medium breeds, closer to 8 for the large ones. A 12-week pregnancy is how people lose a doe.",
       "Take the doe to the buck's hutch, not the other way. Stay for the breeding. Write the date down. Gestation runs about 31 days. Hang the nest box on day 28.",
       "Sex them before you trust a grow-out pen. Littermates get along until they don't, which is often the week hormones arrive. Split by sex before then. Two adults of breeding age will mate through a wire divider — use the solid wall in the side-by-side plan.",
+      "A doe may kill, scatter, or ignore a litter if she is young, stressed, disturbed by predators or dogs, or poorly fed. Keep the area quiet, and give her plenty of hay, water, and feed. Many first litters fail. Don't breed more rabbits than you can feed, house, or find good homes for.",
     ],
   },
   {
@@ -446,9 +446,74 @@ export const CHAPTERS: { title: string; paragraphs: string[]; bullets?: string[]
     ],
     bullets: [
       "Moldy hay, heated grass clippings, anything sprayed",
-      "Avocado, chocolate, rhubarb, potato plants, onion in any serious amount",
+      "Never feed: avocado, chocolate, rhubarb, onion, garlic, leeks, iceberg lettuce, potato or tomato leaves and stems, houseplants, bread, crackers, or seeds and nuts. Fruit and carrots are treats only: a spoonful a day, not a meal. Good daily greens: romaine, cilantro, parsley, dandelion greens.",
       "A diet of pellets and no hay",
       "Cedar bedding in the cage, or clay litter in the tray",
     ],
   },
+  {
+    id: "handling",
+    title: "Handling",
+    paragraphs: [
+      "Always support the back end. Put one hand under the chest and one under the rump, and hold the rabbit close to your body. NEVER lift a rabbit by the ears or the scruff alone. A rabbit that kicks while unsupported can break its own back. Sit on the floor with young children so a dropped rabbit does not fall far.",
+    ],
+  },
+  {
+    id: "health",
+    title: "Health",
+    paragraphs: [],
+    bullets: [
+      "Gut stasis: no eating or no droppings for 12 hours is an emergency. Call a vet now.",
+      "RHDV2 (rabbit hemorrhagic disease) kills fast. Ask your vet about the vaccine. Wash hands and change shoes after visiting other rabbits, and do not bring in wild-cut greens from areas with wild rabbits during an outbreak.",
+      "Teeth never stop growing. Unlimited hay wears them down. Drooling, dropping food, or weight loss means a vet check.",
+      "Flystrike: flies lay eggs in a dirty rear end, and maggots can kill in a day. Check every rabbit's bottom daily in warm weather.",
+      "Snuffles: sneezing with white or yellow discharge. Separate the rabbit and see a vet.",
+      "Coccidiosis: diarrhea, potbelly, and weight loss in young rabbits. Keep floors and feeders clean. See a vet.",
+      "Ear mites: crusty ears and head shaking. See a vet.",
+      "Spay and neuter pet rabbits. It reduces fighting and spraying, and it lowers the high risk of uterine cancer in unspayed does.",
+      "Find a rabbit-savvy (exotics) vet BEFORE you need one.",
+    ],
+  },
+  {
+    id: "meat",
+    title: "For meat raisers",
+    paragraphs: [],
+    bullets: [
+      "Process quickly and humanely. Learn from an experienced person or your county extension office first.",
+      "Wear gloves when cleaning rabbits. Wild and sometimes domestic rabbits can carry tularemia, a disease that infects people through cuts. Do not process a rabbit that seemed sick. Throw out a liver with white spots.",
+      "Cook rabbit meat to 160°F.",
+      "Wash hands, knives, and boards with hot soapy water.",
+    ],
+  },
+  {
+    id: "bonding",
+    title: "Bonding and rehoming",
+    paragraphs: [
+      "Rabbits are social. Fixed rabbits can be bonded in pairs. Introduce them slowly on neutral ground. Many rescue rabbits need homes, so check your local rescue or shelter before you buy.",
+    ],
+  },
+];
+
+export const START_STEPS = [
+  "Decide: pet, rescue, or meat.",
+  "Find a rabbit vet first.",
+  "Give unlimited grass hay, measured pellets, and fresh water.",
+  "Give daily exercise space.",
+  "Keep them shaded and below 80°F.",
+  "Handle them with the back end supported.",
+  "No eating or no droppings for 12 hours means call the vet.",
+];
+
+export const GLOSSARY: { term: string; def: string }[] = [
+  { term: "Doe", def: "Female rabbit." },
+  { term: "Buck", def: "Male rabbit." },
+  { term: "Kit", def: "Baby rabbit." },
+  { term: "Kindling", def: "Giving birth." },
+  { term: "Cecotropes", def: "Soft droppings rabbits eat for nutrition." },
+  { term: "GI stasis", def: "When the gut slows or stops. An emergency." },
+  { term: "Sore hocks", def: "Sores on the heels." },
+  { term: "Flystrike", def: "Maggots in the skin." },
+  { term: "RHDV2", def: "A deadly rabbit virus." },
+  { term: "Fryer", def: "A young meat rabbit." },
+  { term: "Hardware cloth", def: "Small square wire mesh." },
 ];

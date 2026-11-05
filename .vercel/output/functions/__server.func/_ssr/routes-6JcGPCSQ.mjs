@@ -1,7 +1,7 @@
 import { i as __toESM } from "../_runtime.mjs";
 import { K as require_react, b as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { n as Rabbit } from "../_libs/lucide-react.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-BR7ZBX_D.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-6JcGPCSQ.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function usePersisted(key, initial) {
@@ -437,7 +437,7 @@ function SectionView({ model: m, part, onPart }) {
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Callout, {
 						x: 28,
 						y: 214,
-						text: "1/2 in wire top",
+						text: "1/2 × 1 wire top",
 						active: selected("top")
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Callout, {
@@ -995,9 +995,9 @@ function materials(m) {
 			detail: "19 gauge, galvanized. Floor only. Fold cut edges under or trap them under a batten. Smooth side up."
 		},
 		{
-			item: "1/2 in chicken wire",
+			item: "1/2 × 1 in welded wire",
 			qty: `${wireSq} sq ft`,
-			detail: `Walls and the wire ceiling. About ${wireFt} ft of a 36 in roll, waste included. Stretch it drum tight.`
+			detail: `Walls and the wire ceiling. Stronger than chicken wire. About ${wireFt} ft of a 36 in roll, waste included. Stretch it drum tight.`
 		},
 		{
 			item: "Dropping tray",
@@ -1117,9 +1117,9 @@ var BUILD_STEPS = [
 	"Joists every 12 inches. Quarter-inch mesh sags without them, and a sag becomes a puddle.",
 	"Staple 1/4 in hardware cloth on top of the joists, smooth side up. Fold every cut edge under or cover it with a 1×2 batten.",
 	"Screw cleats 3 inches below the mesh, open at the front. Slide the empty tray in and out before a rabbit ever sees it.",
-	"Frame the walls and staple 1/2 in chicken wire on the outside, then the wire ceiling the same way. Drum tight. Batten every edge.",
+	"Frame the walls and staple 1/2 × 1 in welded wire on the outside, then the wire ceiling the same way. Drum tight. Batten every edge.",
 	"Hang the door on two hinges. The latch needs a thumb. Leave no gap a kit can put a head through.",
-	"Roof over the wire, with a vent gap at the eaves and overhang so rain does not blow through the chicken wire.",
+	"Roof over the wire, with a vent gap at the eaves and overhang so rain does not blow through the welded wire.",
 	"Make the resting board, and a second one to swap in. Cover about a third of the floor. A full wood floor puts you back to scraping."
 ];
 var KINDLE_STEP = "Build the nest box with a solid floor and a 4 inch sill. Put it on at day 28 after breeding, not the day you breed. Kits and quarter-inch mesh do not mix.";
@@ -1130,11 +1130,11 @@ var PARTS = [
 	},
 	{
 		id: "sides",
-		label: "1/2 in sides"
+		label: "1/2 × 1 sides"
 	},
 	{
 		id: "top",
-		label: "1/2 in top"
+		label: "1/2 × 1 top"
 	},
 	{
 		id: "tray",
@@ -1157,23 +1157,19 @@ var PART_COPY = {
 	floor: {
 		title: "Quarter-inch mesh, and nothing wider",
 		body: [
-			"The floor is 1/4 inch hardware cloth, 19 gauge, galvanized. That is the shop name for the mesh. Half-inch chicken wire is the wrong roll down here: a kit can put a foot through it, and pellets hang up in the hex.",
+			"The floor is 1/4 inch hardware cloth, 19 gauge, galvanized. That is the shop name for the mesh. 1/2 by 1 inch wire is the wrong roll down here: a kit can put a foot through it, and pellets hang up.",
 			"Staple it on top of joists every 12 inches. Pitch the back 1/4 inch lower than the front so urine follows the pellets instead of pooling in a belly in the cloth.",
 			"Smooth side up. Every cut end folded under or trapped under a batten. A point that can catch a heel will catch a heel. When the galvanizing flakes and rusts, replace the panel. Do not paint a floor they will chew."
 		]
 	},
 	sides: {
-		title: "Half-inch chicken wire on the walls",
-		body: [
-			"The sides are 1/2 inch chicken wire, stretched on the outside of the 2×2 frame and battened so a nose cannot peel a staple. It gives air and a view. A solid box does not.",
-			"Chicken wire keeps a rabbit in. It does not keep a raccoon out. A determined raccoon unzips it. If you have raccoons, dogs, or foxes, build this same frame with 1/2 inch welded wire and a latch that needs a thumb. The floor, the tray, and the roof stay as drawn.",
-			"Adults of breeding age do not share a wire wall. They will breed through it, or fight through it. The side-by-side plan uses a solid plywood divider for that reason."
-		]
+		title: "1/2 by 1 inch welded wire on the walls",
+		body: ["Sides and top are 1/2 by 1 inch welded wire. It is stronger than chicken wire and keeps raccoons, dogs, and foxes out. Stretch it on the outside of the 2×2 frame and batten every edge a nose can peel. It still gives air and a view. Use a latch that needs a thumb.", "Adults of breeding age do not share a wire wall. They will breed through it, or fight through it. The side-by-side plan uses a solid plywood divider for that reason."]
 	},
 	top: {
-		title: "Half-inch chicken wire for the ceiling",
+		title: "1/2 by 1 inch welded wire for the ceiling",
 		body: [
-			"The ceiling of the cage is 1/2 inch chicken wire, the same roll as the walls. It stops a hop into the roof framing and, if something pulls the weather roof off, it is the last thing between a rabbit and a hawk.",
+			"The ceiling of the cage is 1/2 by 1 inch welded wire, the same roll as the walls. It stops a hop into the roof framing and, if something pulls the weather roof off, it is the last thing between a rabbit and a hawk.",
 			"Wire is not a roof. Rain beads on it and noon sun turns it into a broiler. The solid roof sits above this wire with a vent gap so heat can leave.",
 			"Hang the water where they can drink without pressing their head into the ceiling all day. A bottle that drips onto the mesh is a wet floor, which is how sore hocks start."
 		]
@@ -1198,8 +1194,8 @@ var PART_COPY = {
 	roof: {
 		title: "A real roof over the wire",
 		body: [
-			"The sheet draws a gable along the length, metal or shingles, with overhang so rain does not blow straight through the chicken wire. A shed roof is just as honest if you would rather not cut a ridge. Keep the wire ceiling either way.",
-			"Shade is not optional. Rabbits die of heat long before they die of cold. Above about 85°F, frozen bottles and moving air matter more than another scoop of feed. A wire top in full sun is not a roof.",
+			"The sheet draws a gable along the length, metal or shingles, with overhang so rain does not blow straight through the welded wire. A shed roof is just as honest if you would rather not cut a ridge. Keep the wire ceiling either way.",
+			"Shade is not optional. Rabbits die of heat long before they die of cold. Above about 80°F, frozen bottles and moving air matter more than another scoop of feed. A wire top in full sun is not a roof.",
 			"Cold they can take if they are dry, out of the wind, and buried in hay. Wet plus wind is the killer, not the thermometer."
 		]
 	},
@@ -1249,14 +1245,15 @@ var CHAPTERS = [
 	},
 	{
 		title: "Water, weather, and the hours you actually show up",
-		paragraphs: ["Fresh water every day. In a freeze, swap bottles or break the ice in a crock morning and night. In heat, a second check is not fussiness.", "Above about 85°F, get the hutch into shade, freeze a bottle, and give them a cool rest — the board, or a tile you can spare. Below freezing they are fine if the coat is dry and the wind cannot cut through a solid back. Stuff extra hay in. Do not close the hutch into an airtight box."]
+		paragraphs: ["Fresh water every day. In a freeze, swap bottles or break the ice in a crock morning and night. In heat, a second check is not fussiness.", "Above about 80°F, rabbits are in danger. Get the hutch into deep shade, give them frozen water bottles and a cool tile, and keep air moving. Signs of heatstroke: fast breathing, a wet nose, a limp or floppy body, very hot ears. Move the rabbit somewhere cool, wet the ears with cool (not ice-cold) water, and call a vet right away. Never dunk a rabbit in ice water. Below freezing they are fine if the coat is dry and the wind cannot cut through a solid back. Stuff extra hay in. Do not close the hutch into an airtight box."]
 	},
 	{
 		title: "Breeding without a surprise litter",
 		paragraphs: [
 			"Wait until a doe has her adult frame: about 6 months for small and medium breeds, closer to 8 for the large ones. A 12-week pregnancy is how people lose a doe.",
 			"Take the doe to the buck's hutch, not the other way. Stay for the breeding. Write the date down. Gestation runs about 31 days. Hang the nest box on day 28.",
-			"Sex them before you trust a grow-out pen. Littermates get along until they don't, which is often the week hormones arrive. Split by sex before then. Two adults of breeding age will mate through a wire divider — use the solid wall in the side-by-side plan."
+			"Sex them before you trust a grow-out pen. Littermates get along until they don't, which is often the week hormones arrive. Split by sex before then. Two adults of breeding age will mate through a wire divider — use the solid wall in the side-by-side plan.",
+			"A doe may kill, scatter, or ignore a litter if she is young, stressed, disturbed by predators or dogs, or poorly fed. Keep the area quiet, and give her plenty of hay, water, and feed. Many first litters fail. Don't breed more rabbits than you can feed, house, or find good homes for."
 		]
 	},
 	{
@@ -1264,10 +1261,102 @@ var CHAPTERS = [
 		paragraphs: ["No hard pellets for half a day, a hunched sit, teeth grinding, hay refused: that can be gut stasis. It is an emergency, not a tray you forgot.", "Soft clusters smeared on the mesh or matted on the hindquarters mean the rabbit produced cecotropes and did not eat them. Too many pellets, a body too round to turn, a sore hock, or teeth that hurt. A bright rabbit still eating hay can be steered with diet. A quiet one needs a vet."],
 		bullets: [
 			"Moldy hay, heated grass clippings, anything sprayed",
-			"Avocado, chocolate, rhubarb, potato plants, onion in any serious amount",
+			"Never feed: avocado, chocolate, rhubarb, onion, garlic, leeks, iceberg lettuce, potato or tomato leaves and stems, houseplants, bread, crackers, or seeds and nuts. Fruit and carrots are treats only: a spoonful a day, not a meal. Good daily greens: romaine, cilantro, parsley, dandelion greens.",
 			"A diet of pellets and no hay",
 			"Cedar bedding in the cage, or clay litter in the tray"
 		]
+	},
+	{
+		id: "handling",
+		title: "Handling",
+		paragraphs: ["Always support the back end. Put one hand under the chest and one under the rump, and hold the rabbit close to your body. NEVER lift a rabbit by the ears or the scruff alone. A rabbit that kicks while unsupported can break its own back. Sit on the floor with young children so a dropped rabbit does not fall far."]
+	},
+	{
+		id: "health",
+		title: "Health",
+		paragraphs: [],
+		bullets: [
+			"Gut stasis: no eating or no droppings for 12 hours is an emergency. Call a vet now.",
+			"RHDV2 (rabbit hemorrhagic disease) kills fast. Ask your vet about the vaccine. Wash hands and change shoes after visiting other rabbits, and do not bring in wild-cut greens from areas with wild rabbits during an outbreak.",
+			"Teeth never stop growing. Unlimited hay wears them down. Drooling, dropping food, or weight loss means a vet check.",
+			"Flystrike: flies lay eggs in a dirty rear end, and maggots can kill in a day. Check every rabbit's bottom daily in warm weather.",
+			"Snuffles: sneezing with white or yellow discharge. Separate the rabbit and see a vet.",
+			"Coccidiosis: diarrhea, potbelly, and weight loss in young rabbits. Keep floors and feeders clean. See a vet.",
+			"Ear mites: crusty ears and head shaking. See a vet.",
+			"Spay and neuter pet rabbits. It reduces fighting and spraying, and it lowers the high risk of uterine cancer in unspayed does.",
+			"Find a rabbit-savvy (exotics) vet BEFORE you need one."
+		]
+	},
+	{
+		id: "meat",
+		title: "For meat raisers",
+		paragraphs: [],
+		bullets: [
+			"Process quickly and humanely. Learn from an experienced person or your county extension office first.",
+			"Wear gloves when cleaning rabbits. Wild and sometimes domestic rabbits can carry tularemia, a disease that infects people through cuts. Do not process a rabbit that seemed sick. Throw out a liver with white spots.",
+			"Cook rabbit meat to 160°F.",
+			"Wash hands, knives, and boards with hot soapy water."
+		]
+	},
+	{
+		id: "bonding",
+		title: "Bonding and rehoming",
+		paragraphs: ["Rabbits are social. Fixed rabbits can be bonded in pairs. Introduce them slowly on neutral ground. Many rescue rabbits need homes, so check your local rescue or shelter before you buy."]
+	}
+];
+var START_STEPS = [
+	"Decide: pet, rescue, or meat.",
+	"Find a rabbit vet first.",
+	"Give unlimited grass hay, measured pellets, and fresh water.",
+	"Give daily exercise space.",
+	"Keep them shaded and below 80°F.",
+	"Handle them with the back end supported.",
+	"No eating or no droppings for 12 hours means call the vet."
+];
+var GLOSSARY = [
+	{
+		term: "Doe",
+		def: "Female rabbit."
+	},
+	{
+		term: "Buck",
+		def: "Male rabbit."
+	},
+	{
+		term: "Kit",
+		def: "Baby rabbit."
+	},
+	{
+		term: "Kindling",
+		def: "Giving birth."
+	},
+	{
+		term: "Cecotropes",
+		def: "Soft droppings rabbits eat for nutrition."
+	},
+	{
+		term: "GI stasis",
+		def: "When the gut slows or stops. An emergency."
+	},
+	{
+		term: "Sore hocks",
+		def: "Sores on the heels."
+	},
+	{
+		term: "Flystrike",
+		def: "Maggots in the skin."
+	},
+	{
+		term: "RHDV2",
+		def: "A deadly rabbit virus."
+	},
+	{
+		term: "Fryer",
+		def: "A young meat rabbit."
+	},
+	{
+		term: "Hardware cloth",
+		def: "Small square wire mesh."
 	}
 ];
 function cx(...parts) {
@@ -1446,7 +1535,7 @@ function Studio() {
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "mt-2 text-sm text-muted",
-							children: "Diagonal hatch is 1/2 in chicken wire. Tight grid is 1/4 in mesh. The clay pan is the tray."
+							children: "Diagonal hatch is 1/2 × 1 in welded wire. Tight grid is 1/4 in mesh. The clay pan is the tray."
 						})
 					]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -1553,6 +1642,10 @@ function Stat({ label, value }) {
 }
 var NAV = [
 	{
+		href: "#start",
+		label: "Start"
+	},
+	{
 		href: "#droppings",
 		label: "Two droppings"
 	},
@@ -1563,6 +1656,18 @@ var NAV = [
 	{
 		href: "#raising",
 		label: "Raising"
+	},
+	{
+		href: "#health",
+		label: "Health"
+	},
+	{
+		href: "#glossary",
+		label: "Glossary"
+	},
+	{
+		href: "#about",
+		label: "About"
 	},
 	{
 		href: "#log",
@@ -1576,23 +1681,37 @@ function Home() {
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
 				className: "sticky top-0 z-20 border-b border-line bg-paper/95 backdrop-blur",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 md:px-6",
+					className: "mx-auto flex max-w-6xl flex-col gap-2 px-4 py-3 sm:flex-row sm:items-center md:px-6",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
 						href: "#top",
-						className: "flex shrink-0 items-center gap-3",
+						className: "flex min-w-0 items-center gap-3",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "grid size-11 place-items-center bg-moss text-paper",
+							className: "grid size-11 shrink-0 place-items-center bg-moss text-paper",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Rabbit, {
 								className: "size-6",
 								"aria-hidden": "true"
 							})
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "block font-display text-xl leading-none",
-							children: "Burrow Bench"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "hidden text-sm text-muted sm:block",
-							children: "Raising guide and hutch plans"
-						})] })]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "min-w-0",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "block font-display text-xl leading-tight",
+									children: "Rabbits: Burrow Bench"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "block text-sm text-muted",
+									children: "Raising guide and hutch plans"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "block text-xs text-muted",
+									children: "The Education Revolution Pocket Guide, Volume 19: Rabbits"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "block text-xs text-muted",
+									children: "by Blue and the Awesome Dudes"
+								})
+							]
+						})]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
 						className: "flex min-w-0 flex-1 justify-end gap-1 overflow-x-auto",
 						children: NAV.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
@@ -1613,7 +1732,7 @@ function Home() {
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "text-sm font-semibold text-clay",
-									children: "Quarter-inch floor. Half-inch wire. Tray underneath."
+									children: "Quarter-inch floor. 1/2 by 1 wire. Tray underneath."
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
 									className: "mt-3 max-w-xl text-4xl text-ink md:text-5xl",
@@ -1633,7 +1752,7 @@ function Home() {
 							className: "lg:col-span-6",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 								src: "/images/hutch-hero.jpg",
-								alt: "Cedar hutch with chicken-wire sides, a metal roof, and a galvanized tray pulled out underneath.",
+								alt: "Cedar hutch with wire sides, a metal roof, and a galvanized tray pulled out underneath.",
 								className: "aspect-video w-full object-cover",
 								width: 1792,
 								height: 1008
@@ -1651,6 +1770,33 @@ function Home() {
 								className: "max-w-3xl font-display text-2xl leading-snug md:text-3xl",
 								children: "Hard pellets are trash. The soft clusters are a meal, and a healthy rabbit takes that meal off their own body — not out of the tray."
 							})
+						})
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
+						id: "start",
+						className: "border-t border-line",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "text-sm font-semibold text-moss",
+									children: "New to rabbits?"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+									className: "mt-2 text-3xl md:text-4xl",
+									children: "Start here"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("ol", {
+									className: "mt-6 flex max-w-prose flex-col gap-3",
+									children: START_STEPS.map((step, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
+										className: "grid grid-cols-[auto_minmax(0,1fr)] gap-4",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "font-display text-xl text-moss tabular-nums",
+											children: index + 1
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: step })]
+									}, step))
+								})
+							]
 						})
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
@@ -1734,7 +1880,7 @@ function Home() {
 									children: "Why the bottom is a tighter mesh than the walls"
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 									className: "mt-3 text-muted",
-									children: "Sides and top are 1/2 inch chicken wire: air, light, and a fence that keeps a rabbit in. The floor is 1/4 inch hardware cloth so kits cannot slip through and hard pellets still can. The tray lives in that gap, in the hutch and outside the cage."
+									children: "Sides and top are 1/2 by 1 inch welded wire. It is stronger than chicken wire and keeps raccoons, dogs, and foxes out. The floor is 1/4 inch hardware cloth so kits cannot slip through and hard pellets still can. The tray lives in that gap, in the hutch and outside the cage."
 								})] })]
 							})
 						]
@@ -1753,9 +1899,19 @@ function Home() {
 									className: "mt-2 max-w-2xl text-3xl md:text-4xl",
 									children: "Draw the hutch, then cut it"
 								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 									className: "mt-3 max-w-prose text-muted",
-									children: "Pick the animal and the plan. The sheet, the shopping list, and the order of work follow. These are interior sizes for a welfare-minded hutch, not a cramped commercial cage. Measure twice anyway."
+									children: [
+										"Pick the animal and the plan. The sheet, the shopping list, and the order of work follow. These are minimum hutch sizes. A rabbit should be able to stand fully upright, stretch out, and take at least three hops. Every rabbit also needs time every day in a larger, safe exercise pen or rabbit-proofed room. Pet rabbits can live indoors with a litter box instead of a hutch. See the",
+										" ",
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
+											href: "https://rabbit.org",
+											className: "font-semibold text-moss underline",
+											children: "House Rabbit Society"
+										}),
+										" ",
+										"(rabbit.org). Measure twice anyway."
+									]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "mt-8",
@@ -1781,22 +1937,74 @@ function Home() {
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "mt-8 grid gap-6 lg:grid-cols-2",
 									children: CHAPTERS.map((chapter) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+										id: chapter.id,
 										className: "border border-line bg-sheet p-5 md:p-6",
 										children: [
 											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
 												className: "text-2xl",
 												children: chapter.title
 											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+											chapter.paragraphs.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 												className: "mt-3 flex flex-col gap-3 text-muted",
 												children: chapter.paragraphs.map((paragraph) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: paragraph }, paragraph))
-											}),
+											}) : null,
 											chapter.bullets ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
 												className: "mt-4 list-disc pl-5 text-muted",
 												children: chapter.bullets.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: item }, item))
 											}) : null
 										]
 									}, chapter.title))
+								})
+							]
+						})
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
+						id: "glossary",
+						className: "border-t border-line",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "text-sm font-semibold text-moss",
+									children: "Words on the bench"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+									className: "mt-2 text-3xl md:text-4xl",
+									children: "Glossary"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dl", {
+									className: "mt-8 grid gap-px border border-line bg-line sm:grid-cols-2",
+									children: GLOSSARY.map((entry) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "bg-sheet px-4 py-3",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("dt", {
+											className: "font-semibold",
+											children: entry.term
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dd", {
+											className: "text-muted",
+											children: entry.def
+										})]
+									}, entry.term))
+								})
+							]
+						})
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
+						id: "about",
+						className: "border-t border-line",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "text-sm font-semibold text-moss",
+									children: "Volume 19"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+									className: "mt-2 text-3xl md:text-4xl",
+									children: "About and disclaimer"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "mt-4 flex max-w-prose flex-col gap-4",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "This pocket guide is for learning and is not veterinary care. Always ask a rabbit-savvy vet. Pet poison emergency: ASPCA Animal Poison Control (888) 426-4435 (a fee may apply). Blue and the Awesome Dudes, who have raised rescue rabbits, are not responsible for illness, injury, or loss. Part of The Education Revolution pocket guide series." })
 								})
 							]
 						})
@@ -1830,12 +2038,15 @@ function Home() {
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("footer", {
 				className: "border-t border-line",
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "mx-auto max-w-6xl px-4 py-8 md:px-6",
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "max-w-prose text-sm text-muted",
 						children: "Burrow Bench is a shop and husbandry guide, not veterinary care. A rabbit who will not eat, will not pass hard pellets, or sits hunched and grinding needs a vet the same day — the tray cannot fix that. Flemish Giants and other giants want more length than the large plan."
-					})
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "mt-3 max-w-prose text-sm text-muted",
+						children: "Privacy: This guide does not collect your name, email, or any personal information. Your bench log is saved only on your own device."
+					})]
 				})
 			})
 		]

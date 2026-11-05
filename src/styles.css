@@ -48,8 +48,9 @@
     text-wrap: pretty;
   }
 
-  section[id] {
-    scroll-margin-top: 5.5rem;
+  section[id],
+  article[id] {
+    scroll-margin-top: 8rem;
   }
 }
 

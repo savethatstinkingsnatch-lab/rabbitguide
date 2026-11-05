@@ -3,7 +3,7 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import appCss from "../styles.css?url";
 
-const APP_NAME = "Burrow Bench";
+const APP_NAME = "Rabbits: Burrow Bench";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -14,7 +14,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "A rabbit raising guide and hutch plans: quarter-inch mesh floors, half-inch chicken wire, and a dropping tray under the cage.",
+          "A free rabbit raising guide and hutch plans: quarter-inch mesh floors, 1/2 by 1 inch welded wire, and a dropping tray under the cage.",
       },
       { name: "theme-color", content: "#f3eee4" },
     ],

@@ -119,7 +119,7 @@ function SectionView({ model: m, part, onPart }: Omit<Props, "view">) {
       <line x1={x + depth - 14} x2={x + depth - 14} y1={legTop + 40} y2={448} stroke={moss} strokeWidth="4" />
       <g pointerEvents="none">
         <Callout x={28} y={topY - 62} text="Weather roof" active={selected("roof")} />
-        <Callout x={28} y={topY + 4} text="1/2 in wire top" active={selected("top")} />
+        <Callout x={28} y={topY + 4} text="1/2 × 1 wire top" active={selected("top")} />
         <Callout x={28} y={topY + 56} text={`${m.height} in high`} active={false} />
         <Callout x={28} y={floorY + 4} text="1/4 in mesh" active={selected("floor")} />
         <Callout x={28} y={trayY + 20} text="Tray pulls out" active={selected("tray")} tone="clay" />

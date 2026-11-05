@@ -52,12 +52,11 @@ function Home() {
       <main id="top">
         <section className="mx-auto grid max-w-6xl items-end gap-8 px-4 py-10 md:px-6 md:py-14 lg:grid-cols-12">
           <div className="lg:col-span-6">
-            <p className="text-sm font-semibold text-clay">Quarter-inch floor. 1/2 by 1 wire. Tray underneath.</p>
-            <h1 className="mt-3 max-w-xl text-4xl text-ink md:text-5xl">The bathroom goes under the floor.</h1>
+            <p className="text-sm font-semibold text-clay">Solid floor. Secure hutch. Litter pan inside.</p>
+            <h1 className="mt-3 max-w-xl text-4xl text-ink md:text-5xl">Start with a safe floor.</h1>
             <p className="mt-4 max-w-prose text-lg text-muted">
-              A hutch is the whole house, so the droppings stay in the house. The mesh lets the waste out. The
-              tray catches it outside the room the rabbit stands in. The part they still need to eat never had to
-              touch that tray.
+              A hutch needs a dry, non-slip floor that protects a rabbit's feet. Put an easy-clean litter pan
+              inside, and give the rabbit daily exercise in a larger safe area.
             </p>
             <a
               href="#plans"
@@ -69,13 +68,13 @@ function Home() {
           <figure className="lg:col-span-6">
             <img
               src="/images/hutch-hero.jpg"
-              alt="Cedar hutch with wire sides, a metal roof, and a galvanized tray pulled out underneath."
+              alt="A secure outdoor hutch with wire sides, a solid roof, and a solid floor."
               className="aspect-video w-full object-cover"
               width={1792}
               height={1008}
             />
             <figcaption className="mt-2 text-sm text-muted">
-              Wire walls, a solid roof over them, and a tray that slides out under the floor.
+              Secure wire walls, weather protection, and a solid floor with a litter pan inside.
             </figcaption>
           </figure>
         </section>
@@ -83,8 +82,8 @@ function Home() {
         <section className="bg-moss text-paper">
           <div className="mx-auto max-w-6xl px-4 py-10 md:px-6 md:py-12">
             <p className="max-w-3xl font-display text-2xl leading-snug md:text-3xl">
-              Hard pellets are trash. The soft clusters are a meal, and a healthy rabbit takes that meal off their
-              own body — not out of the tray.
+              Rabbits eat cecotropes directly. Keep the litter area clean, and ask a rabbit-savvy veterinarian if
+              soft clusters are repeatedly left uneaten.
             </p>
           </div>
         </section>
@@ -116,23 +115,22 @@ function Home() {
                   for a yard they are not allowed in.
                 </p>
                 <p>
-                  What changes the cleaning is that the pile is two different products. Only one of them is trash.
+                  Rabbits produce hard fecal pellets and softer cecotropes. Cecotropes are normally eaten directly
+                  from the body; they are not food to collect from a litter pan.
                 </p>
                 <p>
-                  <strong className="font-semibold text-ink">Hard pellets</strong> are the trash. Small, round, dry,
-                  mostly spent hay. They should leave the room. A solid floor makes you the janitor of every one of
-                  them, mixed with urine, under the animal.
+                  <strong className="font-semibold text-ink">Hard fecal pellets</strong> are usually small, round,
+                  and dry. Remove them and soiled litter regularly to keep the enclosure clean.
                 </p>
                 <p>
-                  <strong className="font-semibold text-ink">Cecotropes</strong> are the second harvest. Soft,
-                  glossy, stuck together like a little bunch of grapes, made in the cecum. The rabbit turns and eats
-                  them straight from the body, usually in the quiet hours. You are not supposed to serve them from a
-                  pan. If the rabbit is well, you will almost never see one.
+                  <strong className="font-semibold text-ink">Cecotropes</strong> are soft,
+                  glossy clusters made in the cecum. Rabbits usually eat them directly from the body. Repeatedly
+                  finding uneaten clusters can have several causes; discuss persistent or accompanied changes with
+                  a rabbit-savvy vet.
                 </p>
                 <p>
-                  So the tray does not go inside the cage as a buffet. It goes under a quarter-inch mesh floor,
-                  outside the living space, where the hard pellets fall and you pull the mess out in one slide. The
-                  meal they still need never had to land there.
+                  Use a solid, dry, non-slip floor and place a low-sided litter pan inside the enclosure. Choose
+                  rabbit-safe litter, clean it regularly, and keep bedding dry.
                 </p>
               </div>
             </div>
@@ -145,7 +143,7 @@ function Home() {
                 height={1200}
               />
               <figcaption className="mt-2 text-sm text-muted">
-                A healthy rabbit finishes cecotropes before you see them. Finding them is the signal, not the menu.
+                Cecotropes are normally eaten directly; repeated uneaten clusters can warrant a diet and health check.
               </figcaption>
             </figure>
           </div>
@@ -162,18 +160,18 @@ function Home() {
 
           <figure className="mt-10 grid items-center gap-6 border border-line bg-sheet p-4 md:grid-cols-2 md:p-6">
             <img
-              src="/images/mesh-tray.jpg"
-              alt="Quarter-inch hardware cloth above a tray holding a few hard pellets."
+              src="/images/hutch-hero.jpg"
+              alt="A secure hutch with a solid floor and a protected roof."
               className="aspect-mesh w-full object-cover"
               width={1728}
               height={1152}
             />
             <figcaption>
-              <h3 className="text-2xl">Why the bottom is a tighter mesh than the walls</h3>
+              <h3 className="text-2xl">Why the living floor should be solid</h3>
               <p className="mt-3 text-muted">
-                Sides and top are 1/2 by 1 inch welded wire. It is stronger than chicken wire and keeps raccoons, dogs,
-                and foxes out. The floor is 1/4 inch hardware cloth so kits cannot slip through and hard pellets still
-                can. The tray lives in that gap, in the hutch and outside the cage.
+                A solid, non-slip floor helps protect a rabbit's feet. Use sturdy, well-fastened welded wire on
+                exposed sides, a secure latch, a weatherproof roof, and a litter pan inside the living area. Check
+                the hutch often for damage and keep it shaded and ventilated.
               </p>
             </figcaption>
           </figure>
@@ -184,10 +182,11 @@ function Home() {
             <p className="text-sm font-semibold text-moss">The bench</p>
             <h2 className="mt-2 max-w-2xl text-3xl md:text-4xl">Draw the hutch, then cut it</h2>
             <p className="mt-3 max-w-prose text-muted">
-              Pick the animal and the plan. The sheet, the shopping list, and the order of work follow. These are
-              minimum hutch sizes. A rabbit should be able to stand fully upright, stretch out, and take at least
-              three hops. Every rabbit also needs time every day in a larger, safe exercise pen or rabbit-proofed
-              room. Pet rabbits can live indoors with a litter box instead of a hutch. See the{" "}
+              Pick the animal and the plan. The sheet, shopping list, and order of work follow. These dimensions
+              are starting points, not universal minimums. Measure the adult rabbit and enlarge the room so it can
+              stand fully upright, stretch out, turn, and move freely. A hutch alone is not a full-time home:
+              provide a much larger secure exercise area with frequent access. Pet rabbits can live indoors with a
+              litter box and exercise space instead of a hutch. See the{" "}
               <a href="https://rabbit.org" className="font-semibold text-moss underline">
                 House Rabbit Society
               </a>{" "}
@@ -215,10 +214,9 @@ function Home() {
                   can, put a fence around the hutch area.
                 </p>
                 <p>
-                  We didn't have money for a vet. Once, a baby was very sick, and we had to put it down ourselves
-                  and bury it deep so no other animal got sick. If you are ever in that spot, call a local rabbit
-                  rescue, animal shelter, or experienced breeder first. Many will help with a quick, humane end at
-                  low or no cost.
+                  When a rabbit is very sick, contact a rabbit-savvy veterinarian or emergency clinic for humane
+                  care. A rescue or shelter may help locate veterinary support or discuss available options. Do
+                  not attempt euthanasia at home.
                 </p>
                 <p className="font-display text-xl">— Blue</p>
               </div>
@@ -289,7 +287,7 @@ function Home() {
             <p className="text-sm font-semibold text-moss">On this device</p>
             <h2 className="mt-2 text-3xl md:text-4xl">Bench log</h2>
             <p className="mt-3 max-w-prose text-muted">
-              A short list of the work the mesh does not do for you. Mark it as you go. It stays in this browser.
+              A short list of daily care tasks. Mark them as you go; the log stays in this browser.
             </p>
             <div className="mt-8">
               <CareLog />
@@ -302,7 +300,7 @@ function Home() {
         <div className="mx-auto max-w-6xl px-4 py-8 md:px-6">
           <p className="max-w-prose text-sm text-muted">
             Burrow Bench is a shop and husbandry guide, not veterinary care. A rabbit who will not eat, will not
-            pass hard pellets, or sits hunched and grinding needs a vet the same day — the tray cannot fix that.
+            pass hard pellets, or sits hunched and grinding needs prompt veterinary advice. Do not wait for a 12-hour mark if the rabbit is unwell.
             Flemish Giants and other giants want more length than the large plan.
           </p>
           <p className="mt-3 max-w-prose text-sm text-muted">

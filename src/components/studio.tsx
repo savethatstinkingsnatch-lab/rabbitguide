@@ -172,7 +172,7 @@ export function Studio() {
             </div>
           </div>
           <p className="mt-2 text-sm text-muted">
-            Diagonal hatch is 1/2 × 1 in welded wire. Tight grid is 1/4 in mesh. The clay pan is the tray.
+            Use the diagrams as planning aids. The living area has a solid floor; each litter pan sits inside its room.
           </p>
         </div>
 

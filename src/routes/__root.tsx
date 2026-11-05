@@ -14,7 +14,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "A free rabbit raising guide and hutch plans: quarter-inch mesh floors, 1/2 by 1 inch welded wire, and a dropping tray under the cage.",
+          "A free rabbit raising guide with husbandry basics and hutch plans featuring solid, non-slip floors, secure construction, and litter pans.",
       },
       { name: "theme-color", content: "#f3eee4" },
     ],

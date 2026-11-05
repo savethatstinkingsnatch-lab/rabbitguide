@@ -1,0 +1,770 @@
+diff --git a/src/components/care-log.tsx b/src/components/care-log.tsx
+index bba3651..27c2de5 100644
+--- a/src/components/care-log.tsx
++++ b/src/components/care-log.tsx
+@@ -15,33 +15,33 @@ const TASKS = [
+   },
+   {
+     id: "tray",
+-    label: "Tray dumped",
++    label: "Litter pan cleaned",
+     days: 1,
+-    hint: "This is the whole point of the mesh. Ammonia builds in a day of warm weather.",
++    hint: "Remove soiled litter regularly and keep the pan and floor dry.",
+   },
+   {
+     id: "ceco",
+     label: "No cecotropes stuck on the rabbit",
+     days: 1,
+-    hint: "A clean vent means they made the reach. Smears are diet or pain, not a tray to feed back.",
++    hint: "Repeated uneaten clusters can relate to diet, weight, pain, or illness; ask a rabbit-savvy vet if persistent.",
+   },
+   {
+     id: "board",
+-    label: "Resting board swapped",
++    label: "Floor and bedding checked",
+     days: 7,
+-    hint: "Wet wood and wire together are how sore hocks start.",
++    hint: "Keep the solid floor dry and non-slip; check feet for redness or sores.",
+   },
+   {
+     id: "brush",
+-    label: "Mesh brushed, tray washed",
++    label: "Litter pan and floor cleaned",
+     days: 7,
+-    hint: "Hair mats on 1/4 in mesh until pellets sit in it instead of falling through.",
++    hint: "Clean the pan and surrounding floor; replace wet or soiled bedding.",
+   },
+   {
+     id: "wire",
+-    label: "Wire, latches, and staples",
++    label: "Wire, latches, and floor inspected",
+     days: 7,
+-    hint: "A loose corner is an exit, or a cut foot.",
++    hint: "Repair loose wire, sharp edges, damaged flooring, and unreliable latches.",
+   },
+   {
+     id: "hocks",
+diff --git a/src/components/hutch-sheet.tsx b/src/components/hutch-sheet.tsx
+index 2b171ec..f2f36b0 100644
+--- a/src/components/hutch-sheet.tsx
++++ b/src/components/hutch-sheet.tsx
+@@ -30,18 +30,15 @@ export function HutchSheet({ model: m, part, view, onPart }: Props) {
+     view === "section" ? "Section through the room" : view === "front" ? "Front elevation" : "Floor plan";
+   const caption =
+     view === "section"
+-      ? "End view. The tray pulls to the front, on the right."
++      ? "End view. The litter pan sits inside on a solid floor."
+       : view === "front"
+         ? "The face you open. Each door is wire, not wood."
+-        : "Looking down. Tight grid is the 1/4 in floor.";
++        : "Looking down. Solid floor with a litter pan in each room.";
+ 
+   return (
+     <svg viewBox="0 0 720 520" role="img" aria-label={`${title}. ${caption}`} className="h-auto w-full">
+       <rect width="720" height="520" fill={sheet} />
+       <defs>
+-        <pattern id="mesh14" width="6" height="6" patternUnits="userSpaceOnUse">
+-          <path d="M6 0 H0 V6" fill="none" stroke={moss} strokeWidth="0.7" />
+-        </pattern>
+         <pattern id="wire12" width="14" height="14" patternUnits="userSpaceOnUse">
+           <path d="M0 14 L14 0 M0 0 L14 14" stroke={ink} strokeWidth="0.55" opacity="0.4" />
+         </pattern>
+@@ -73,14 +70,11 @@ function SectionView({ model: m, part, onPart }: Omit<Props, "view">) {
+   const ht = 118;
+   const floorY = 328;
+   const topY = floorY - ht;
+-  const gap = 28;
+-  const trayH = 32;
+-  const pull = 42;
+-  const meshT = 10;
+-  const trayY = floorY + meshT + gap;
++  const panY = floorY - 32;
++  const panH = 24;
+   const selected = (id: PartId) => part === id;
+   const roof = roofPoly(x - 26, x + depth + 26, topY - 16, 50);
+-  const legTop = trayY + trayH;
++  const legTop = floorY + 8;
+ 
+   return (
+     <g fontFamily={sans}>
+@@ -95,23 +89,12 @@ function SectionView({ model: m, part, onPart }: Omit<Props, "view">) {
+         <rect x={x} y={topY} width={9} height={ht} fill={moss} />
+         <rect x={x + depth - 9} y={topY} width={9} height={ht} fill={moss} />
+       </g>
+-      <g {...hit("rest", part, onPart)}>
+-        <rect
+-          x={x + 22}
+-          y={floorY - 12}
+-          width={Math.min(m.restD * s, depth * 0.42)}
+-          height={12}
+-          fill={selected("rest") ? moss : mossSoft}
+-          stroke={moss}
+-        />
+-      </g>
+       <g {...hit("floor", part, onPart)}>
+-        <rect x={x} y={floorY} width={depth} height={meshT} fill="url(#mesh14)" stroke={selected("floor") ? moss : ink} />
++        <rect x={x} y={floorY} width={depth} height={12} fill={selected("floor") ? moss : mossSoft} stroke={ink} />
+       </g>
+       <g {...hit("tray", part, onPart)}>
+-        <rect x={x} y={trayY} width={depth + pull} height={trayH} fill={selected("tray") ? claySoft : sheet} stroke={clay} />
+-        <rect x={x + 8} y={trayY + 6} width={depth + pull - 20} height={trayH - 12} fill="url(#pellets)" />
+-        <rect x={x + depth + pull} y={trayY + 10} width={12} height={12} fill={clay} stroke="none" />
++        <rect x={x + 20} y={panY} width={depth * 0.52} height={panH} rx={3} fill={selected("tray") ? claySoft : sheet} stroke={clay} />
++        <rect x={x + 27} y={panY + 5} width={depth * 0.52 - 14} height={panH - 10} fill="url(#pellets)" />
+       </g>
+       <line x1={x + 14} x2={x + 14} y1={legTop} y2={legTop + 22} stroke={moss} strokeWidth="4" />
+       <line x1={x + 14} x2={x + 14} y1={legTop + 40} y2={448} stroke={moss} strokeWidth="4" />
+@@ -121,13 +104,10 @@ function SectionView({ model: m, part, onPart }: Omit<Props, "view">) {
+         <Callout x={28} y={topY - 62} text="Weather roof" active={selected("roof")} />
+         <Callout x={28} y={topY + 4} text="1/2 × 1 wire top" active={selected("top")} />
+         <Callout x={28} y={topY + 56} text={`${m.height} in high`} active={false} />
+-        <Callout x={28} y={floorY + 4} text="1/4 in mesh" active={selected("floor")} />
+-        <Callout x={28} y={trayY + 20} text="Tray pulls out" active={selected("tray")} tone="clay" />
+-        <text x={x + 28} y={floorY - 18} fill={selected("rest") ? moss : muted} fontSize="13">
+-          Rest board
+-        </text>
++        <Callout x={28} y={floorY + 10} text="Solid floor" active={selected("floor")} />
++        <Callout x={28} y={panY + 16} text="Litter pan inside" active={selected("tray")} tone="clay" />
+         <text x={x} y={468} fill={muted} fontSize="14">
+-          {m.gap} in gap under the mesh · {m.compartmentD} in deep · {m.stand} in stand, drawn broken
++          {m.compartmentD} in deep · {m.stand} in stand, drawn broken
+         </text>
+       </g>
+     </g>
+@@ -184,16 +164,16 @@ function FrontView({ model: m, part, onPart }: Omit<Props, "view">) {
+         </g>
+       ) : null}
+       <g {...hit("floor", part, onPart)}>
+-        <rect x={x} y={floorY} width={livingW} height={8} fill="url(#mesh14)" stroke={selected("floor") ? moss : ink} />
++        <rect x={x} y={floorY} width={livingW} height={8} fill={selected("floor") ? moss : mossSoft} stroke={ink} />
+       </g>
+       <g {...hit("tray", part, onPart)}>
+         {Array.from({ length: m.trayCount }, (_, i) => (
+           <rect
+             key={i}
+             x={x + i * bay + 8}
+-            y={floorY + 36}
++            y={floorY - 29}
+             width={Math.max(12, bay - 16)}
+-            height={24}
++            height={20}
+             fill={claySoft}
+             stroke={clay}
+             strokeWidth={selected("tray") ? 3 : 1.5}
+@@ -214,7 +194,7 @@ function FrontView({ model: m, part, onPart }: Omit<Props, "view">) {
+           </text>
+         ) : null}
+         <text x={36} y={470} fill={muted} fontSize="14">
+-          {m.livingL} in of 1/4 in floor · {m.trayCount} tray{m.trayCount > 1 ? "s" : ""} under it · {m.height} in high
++          {m.livingL} in of solid floor · {m.trayCount} litter pan{m.trayCount > 1 ? "s" : ""} inside · {m.height} in high
+         </text>
+       </g>
+     </g>
+@@ -236,8 +216,6 @@ function FloorView({ model: m, part, onPart }: Omit<Props, "view">) {
+       {Array.from({ length: m.compartments }, (_, i) => {
+         const bx = x + i * bay;
+         const gapW = i < m.compartments - 1 ? 8 : 0;
+-        const restW = Math.min(m.restL * s, (bay - gapW) * 0.55);
+-        const restH = Math.min(m.restD * s, depth * 0.42);
+         return (
+           <g key={i}>
+             <g {...hit("floor", part, onPart)}>
+@@ -246,19 +224,20 @@ function FloorView({ model: m, part, onPart }: Omit<Props, "view">) {
+                 y={y}
+                 width={bay - gapW}
+                 height={depth}
+-                fill="url(#mesh14)"
++                fill={selected("floor") ? moss : mossSoft}
+                 stroke={selected("floor") ? moss : ink}
+               />
+             </g>
+             {gapW ? <rect x={bx + bay - gapW} y={y} width={gapW} height={depth} fill={moss} /> : null}
+-            <g {...hit("rest", part, onPart)}>
++            <g {...hit("tray", part, onPart)}>
+               <rect
+-                x={bx + 12}
+-                y={y + 12}
+-                width={restW}
+-                height={restH}
+-                fill={selected("rest") ? moss : mossSoft}
+-                stroke={moss}
++                x={bx + bay * 0.12}
++                y={y + depth * 0.52}
++                width={bay * 0.42}
++                height={depth * 0.32}
++                rx={4}
++                fill={selected("tray") ? claySoft : sheet}
++                stroke={clay}
+               />
+             </g>
+             <g {...hit("sides", part, onPart)}>
+@@ -286,15 +265,13 @@ function FloorView({ model: m, part, onPart }: Omit<Props, "view">) {
+         </g>
+       ) : null}
+       <g {...hit("tray", part, onPart)}>
+-        <rect x={x} y={y + depth + 36} width={livingW} height={16} fill={claySoft} stroke={clay} strokeWidth={selected("tray") ? 3 : 1.5} />
++        <rect x={x + 16} y={y + depth + 32} width={Math.min(livingW * 0.4, 180)} height={14} fill={claySoft} stroke={clay} strokeWidth={selected("tray") ? 3 : 1.5} />
+       </g>
+       <g pointerEvents="none">
+         <text x={x} y={y - 16} fill={muted} fontSize="14">
+           Back · {m.livingL} in long · {m.compartmentD} in deep
+         </text>
+-        <text x={x + 18} y={y + 28} fill={ink} fontSize="13">
+-          Rest
+-        </text>
++        <text x={x + 18} y={y + 28} fill={ink} fontSize="13">Solid floor</text>
+         {m.nest ? (
+           <text x={x + livingW + 10} y={y + depth + 28} fill={moss} fontSize="13">
+             Nest, solid floor
+@@ -304,7 +281,7 @@ function FloorView({ model: m, part, onPart }: Omit<Props, "view">) {
+           Front · door swing
+         </text>
+         <text x={x} y={y + depth + 70} fill={clay} fontSize="14">
+-          Tray footprint, {m.gap} in below the mesh
++          Litter pan inside the room
+         </text>
+       </g>
+     </g>
+diff --git a/src/components/studio.tsx b/src/components/studio.tsx
+index 9b3e6f7..9fa4c61 100644
+--- a/src/components/studio.tsx
++++ b/src/components/studio.tsx
+@@ -172,7 +172,7 @@ export function Studio() {
+             </div>
+           </div>
+           <p className="mt-2 text-sm text-muted">
+-            Diagonal hatch is 1/2 × 1 in welded wire. Tight grid is 1/4 in mesh. The clay pan is the tray.
++            Use the diagrams as planning aids. The living area has a solid floor; each litter pan sits inside its room.
+           </p>
+         </div>
+ 
+diff --git a/src/lib/hutch.ts b/src/lib/hutch.ts
+index dbc0ec2..effa7e2 100644
+--- a/src/lib/hutch.ts
++++ b/src/lib/hutch.ts
+@@ -1,6 +1,6 @@
+ export type BreedId = "dwarf" | "medium" | "large";
+ export type PlanId = "single" | "kindling" | "double" | "growout";
+-export type PartId = "floor" | "sides" | "top" | "tray" | "rest" | "roof" | "nest";
++export type PartId = "floor" | "sides" | "top" | "tray" | "roof" | "nest";
+ export type ViewId = "section" | "front" | "floor";
+ 
+ export const BREEDS: { id: BreedId; label: string; examples: string }[] = [
+@@ -25,7 +25,7 @@ export const PLANS: { id: PlanId; label: string; blurb: string }[] = [
+   {
+     id: "single",
+     label: "One adult",
+-    blurb: "A buck, or a dry doe, with a full room and a tray underneath.",
++    blurb: "A buck, or a dry doe, with a solid floor and an easy-clean litter pan.",
+   },
+   {
+     id: "kindling",
+@@ -35,7 +35,7 @@ export const PLANS: { id: PlanId; label: string; blurb: string }[] = [
+   {
+     id: "double",
+     label: "Side by side",
+-    blurb: "Two adults who must not share a room. One roof, a solid wall, two trays.",
++    blurb: "Two adults who must not share a room. One roof, a solid wall, and one litter pan per room.",
+   },
+   {
+     id: "growout",
+@@ -83,8 +83,6 @@ export type HutchModel = {
+   trayCount: number;
+   gap: number;
+   stand: number;
+-  restL: number;
+-  restD: number;
+   sqft: number;
+   rise: number;
+ };
+@@ -141,8 +139,6 @@ export function design(plan: PlanId, breed: BreedId, countIn: number): HutchMode
+     trayCount: compartments,
+     gap: 3,
+     stand: 28,
+-    restL: Math.round(L * 0.62),
+-    restD: Math.round(b.D * 0.5),
+     sqft: (L * b.D) / 144,
+     rise,
+   };
+@@ -151,29 +147,22 @@ export function design(plan: PlanId, breed: BreedId, countIn: number): HutchMode
+ export function summary(m: HutchModel) {
+   const room = `${m.compartmentL} × ${m.compartmentD} × ${m.height} in`;
+   if (m.plan === "double") {
+-    return `Two rooms, each ${room}, split by a solid wall so they cannot breed or bite through the wire. One tray under each floor.`;
++    return `Two rooms, each ${room}, split by a solid wall so they cannot breed or bite through the wire. Each room has a solid floor and an easy-clean litter pan.`;
+   }
+   if (m.plan === "growout") {
+     const pens = m.compartments === 1 ? "1 pen" : `${m.compartments} pens`;
+-    return `${m.herd} growers in ${pens}, each ${room}. One tray per pen. This is fryer space, not a permanent colony of adults.`;
++    return `${m.herd} growers in ${pens}, each ${room}. Each pen has a solid floor and litter pan. This is fryer space, not a permanent colony of adults.`;
+   }
+   if (m.nest) {
+-    return `Doe's room ${room}, plus a ${m.nest.l} × ${m.nest.d} × ${m.nest.h} in nest box with a solid floor. The tray runs under the wire room only.`;
++    return `Doe's room ${room}, with a solid floor and litter pan, plus a ${m.nest.l} × ${m.nest.d} × ${m.nest.h} in nest box with a solid floor.`;
+   }
+-  return `One adult in a ${room} room, on a ${m.stand} in stand. The tray is ${m.trayL} × ${m.trayD} × ${m.trayH} in and sits ${m.gap} in under the mesh.`;
++  return `One adult in a ${room} room with a solid, non-slip floor and an easy-clean litter pan. The ${m.stand} in stand raises the hutch for access and inspection.`;
+ }
+ 
+ export type ShopLine = { item: string; qty: string; detail: string };
+ 
+-function rollWidth(depth: number) {
+-  if (depth <= 24) return 24;
+-  if (depth <= 36) return 36;
+-  return 48;
+-}
+-
+ export function materials(m: HutchModel): ShopLine[] {
+-  const width = rollWidth(m.compartmentD);
+-  const clothFt = Math.ceil((m.livingL + 6) / 12);
++  const floorSq = Math.ceil((m.livingL * m.compartmentD) / 144 * 1.1);
+   const wallSq =
+     (2 * m.livingL * m.height + 2 * m.compartmentD * m.height) / 144;
+   const ceilingSq = (m.livingL * m.compartmentD) / 144;
+@@ -183,8 +172,7 @@ export function materials(m: HutchModel): ShopLine[] {
+   const legIn = legs * (m.stand + m.height + 8);
+   const rails =
+     (m.compartments * 2 * m.compartmentL + (m.compartments + 1) * 2 * m.compartmentD) * 2;
+-  const joists =
+-    Math.max(2, Math.round(m.compartmentL / 12)) * m.compartments * m.compartmentD;
++  const joists = Math.max(2, Math.round(m.compartmentL / 12)) * m.compartments * m.compartmentD;
+   const doors =
+     m.compartments * (2 * m.height + 3 * Math.round(m.compartmentL * 0.62));
+   const pairs = Math.ceil(m.overallL / 24) + 1;
+@@ -196,10 +184,9 @@ export function materials(m: HutchModel): ShopLine[] {
+ 
+   return [
+     {
+-      item: "1/4 in hardware cloth",
+-      qty: `${clothFt} ft of ${width} in`,
+-      detail:
+-        "19 gauge, galvanized. Floor only. Fold cut edges under or trap them under a batten. Smooth side up.",
++      item: "Solid floor panels",
++      qty: `${floorSq} sq ft of exterior-rated plywood`,
++      detail: "Cover the full living floor. Seal only with a fully cured, rabbit-safe finish; add a secure non-slip surface and replace anything chewed or damaged.",
+     },
+     {
+       item: "1/2 × 1 in welded wire",
+@@ -207,9 +194,9 @@ export function materials(m: HutchModel): ShopLine[] {
+       detail: `Walls and the wire ceiling. Stronger than chicken wire. About ${wireFt} ft of a 36 in roll, waste included. Stretch it drum tight.`,
+     },
+     {
+-      item: "Dropping tray",
++      item: "Litter pans",
+       qty: `${m.trayCount} pan${m.trayCount > 1 ? "s" : ""}`,
+-      detail: `Each ${m.trayL} × ${m.trayD} × ${m.trayH} in. Galvanized sheet, or exterior plywood with a plastic liner. Cleats ${m.gap} in below the mesh.`,
++      detail: `One low-sided, easy-clean pan per room. Use rabbit-safe litter; avoid clumping clay and cedar products. Size each pan to the rabbit and room.`,
+     },
+     {
+       item: "2×2 framing",
+@@ -221,11 +208,6 @@ export function materials(m: HutchModel): ShopLine[] {
+       qty: `${battenFt} linear ft`,
+       detail: "Cover every wire edge a rabbit can nose. Staples alone will lose.",
+     },
+-    {
+-      item: "Resting boards",
+-      qty: `${m.compartments * 2}`,
+-      detail: `Each ${m.restL} × ${m.restD} in, cut from 1× stock. Two per room so one can dry.`,
+-    },
+     {
+       item: "Roof",
+       qty: `${Math.ceil((m.overallL + 12) / 12)} × ${Math.ceil((m.compartmentD + 10) / 12)} ft`,
+@@ -266,12 +248,7 @@ export function cuts(m: HutchModel): Cut[] {
+     { qty: m.compartments * 2, size: `${m.height} in`, name: "2×2 door stiles" },
+     { qty: m.compartments * 3, size: `${doorW} in`, name: "2×2 door rails" },
+     { qty: pairs * 2, size: `${rafter} in`, name: "2×2 rafters, gable across the depth" },
+-    { qty: m.trayCount * 2, size: `${m.compartmentL} in`, name: "1×2 tray cleats" },
+-    {
+-      qty: m.compartments * 2,
+-      size: `${m.restL} × ${m.restD} in`,
+-      name: "Resting boards, 1× stock",
+-    },
++    { qty: m.compartments, size: `${m.compartmentL} × ${m.compartmentD} in`, name: "Solid floor panels, exterior-rated plywood" },
+   ];
+   if (m.compartments > 1) {
+     list.push({
+@@ -291,85 +268,74 @@ export function cuts(m: HutchModel): Cut[] {
+ }
+ 
+ export const BUILD_STEPS = [
+-  "Build the end frames first: two legs and the depth rails. The floor sits 28 inches off the ground so the tray is a pull, not a crawl.",
+-  "Join the ends with the length rails. Set the back floor rail 1/4 inch lower than the front so urine walks into the tray instead of sitting in the middle.",
+-  "Joists every 12 inches. Quarter-inch mesh sags without them, and a sag becomes a puddle.",
+-  "Staple 1/4 in hardware cloth on top of the joists, smooth side up. Fold every cut edge under or cover it with a 1×2 batten.",
+-  "Screw cleats 3 inches below the mesh, open at the front. Slide the empty tray in and out before a rabbit ever sees it.",
++  "Build the end frames first: two legs and the depth rails. Raise the solid floor only as high as you can safely reach to clean and inspect it.",
++  "Join the ends with the length rails and fit joists at suitable spacing for the chosen panel thickness and load.",
++  "Fasten a solid, smooth, non-slip floor panel. Keep it level; do not slope the rabbit's living surface.",
++  "Place a low-sided litter pan inside each room where the rabbit can enter and turn comfortably. Secure it so it cannot tip.",
++  "Use absorbent, rabbit-safe litter in the pan and clean it regularly. Keep the floor dry, clean, and free of sharp edges or chewable coatings.",
+   "Frame the walls and staple 1/2 × 1 in welded wire on the outside, then the wire ceiling the same way. Drum tight. Batten every edge.",
+   "Hang the door on two hinges. The latch needs a thumb. Leave no gap a kit can put a head through.",
+   "Roof over the wire, with a vent gap at the eaves and overhang so rain does not blow through the welded wire.",
+-  "Make the resting board, and a second one to swap in. Cover about a third of the floor. A full wood floor puts you back to scraping.",
++  "Provide a separate resting hide or board if useful, with enough clear space for the rabbit to stretch out and move normally.",
+ ];
+ 
+ export const KINDLE_STEP =
+-  "Build the nest box with a solid floor and a 4 inch sill. Put it on at day 28 after breeding, not the day you breed. Kits and quarter-inch mesh do not mix.";
++  "Build the nest box with a solid floor and a 4 inch sill. Put it on at day 28 after breeding, not the day you breed. Keep newborn kits in a secure nest with a solid floor.";
+ 
+ export const PARTS: { id: PartId; label: string }[] = [
+-  { id: "floor", label: "1/4 in floor" },
++  { id: "floor", label: "Solid floor" },
+   { id: "sides", label: "1/2 × 1 sides" },
+   { id: "top", label: "1/2 × 1 top" },
+-  { id: "tray", label: "Dropping tray" },
+-  { id: "rest", label: "Resting board" },
++  { id: "tray", label: "Litter pan" },
+   { id: "roof", label: "Weather roof" },
+   { id: "nest", label: "Nest box" },
+ ];
+ 
+ export const PART_COPY: Record<PartId, { title: string; body: string[] }> = {
+   floor: {
+-    title: "Quarter-inch mesh, and nothing wider",
++    title: "A solid, non-slip floor",
+     body: [
+-      "The floor is 1/4 inch hardware cloth, 19 gauge, galvanized. That is the shop name for the mesh. 1/2 by 1 inch wire is the wrong roll down here: a kit can put a foot through it, and pellets hang up.",
+-      "Staple it on top of joists every 12 inches. Pitch the back 1/4 inch lower than the front so urine follows the pellets instead of pooling in a belly in the cloth.",
+-      "Smooth side up. Every cut end folded under or trapped under a batten. A point that can catch a heel will catch a heel. When the galvanizing flakes and rusts, replace the panel. Do not paint a floor they will chew.",
++      "Use a solid, dry, non-slip floor across the living area. Wire floors can injure rabbits' feet and contribute to sore hocks.",
++      "Put a low-sided litter pan inside the enclosure and clean it regularly. Keep the floor level, dry, and free of sharp edges. Choose materials that are safe if chewed, and replace damaged panels.",
+     ],
+   },
+   sides: {
+     title: "1/2 by 1 inch welded wire on the walls",
+     body: [
+-      "Sides and top are 1/2 by 1 inch welded wire. It is stronger than chicken wire and keeps raccoons, dogs, and foxes out. Stretch it on the outside of the 2×2 frame and batten every edge a nose can peel. It still gives air and a view. Use a latch that needs a thumb.",
++      "Use sturdy, securely fastened welded wire on exposed sides, backed by a sound frame, predator-resistant base, and secure latch. Wire size alone cannot guarantee protection from dogs, raccoons, or foxes. Cover and protect every cut edge.",
+       "Adults of breeding age do not share a wire wall. They will breed through it, or fight through it. The side-by-side plan uses a solid plywood divider for that reason.",
+     ],
+   },
+   top: {
+     title: "1/2 by 1 inch welded wire for the ceiling",
+     body: [
+-      "The ceiling of the cage is 1/2 by 1 inch welded wire, the same roll as the walls. It stops a hop into the roof framing and, if something pulls the weather roof off, it is the last thing between a rabbit and a hawk.",
++      "A securely fastened wire ceiling separates the rabbit from roof framing and adds a barrier overhead. It is only one part of a secure enclosure; check the whole structure, fasteners, roof, and latch for gaps or damage.",
+       "Wire is not a roof. Rain beads on it and noon sun turns it into a broiler. The solid roof sits above this wire with a vent gap so heat can leave.",
+-      "Hang the water where they can drink without pressing their head into the ceiling all day. A bottle that drips onto the mesh is a wet floor, which is how sore hocks start.",
++      "Place water where it stays clean and easy to reach. Check bowls or bottles often, especially in heat and freezing weather, and keep the floor dry.",
+     ],
+   },
+   tray: {
+-    title: "In the hutch, outside the cage",
+-    body: [
+-      "The tray is a pan the size of one room: this plan's length and depth, about 2 1/2 inches deep. Galvanized sheet, or exterior plywood lined with a plastic tray. It rides on cleats 3 inches below the mesh and slides out the front.",
+-      "Those 3 inches are the design. If the pile touches the cloth, the rabbit is standing over a wet sponge and you are scraping again, only from underneath.",
+-      "A handful of plain wood-stove pellets in the tray — not in the cage — drinks the urine. No clay cat litter. No cedar dust rising into the wire. Dump it every day in warm weather. Ammonia from a skipped tray burns lungs.",
+-      "Do not feed the tray back. The round dry pellets in it are waste. The soft clusters a rabbit must eat, cecotropes, are taken straight from the body. If those clusters are sitting in the tray, the rabbit missed them. That is a health note, not a serving.",
+-    ],
+-  },
+-  rest: {
+-    title: "A board on part of the floor",
++    title: "A litter pan inside the hutch",
+     body: [
+-      "Any wire floor, including 1/4 inch, can wear the fur off a heel. That is sore hocks, and it ends rabbits who otherwise look fine.",
+-      "The resting board covers about a third of each room. They will sit on it. Most of the hard pellets still hit mesh, as long as you do not get kind and floor the whole cage in wood.",
+-      "Make two boards. Swap when the one in service is wet. Wet wood against wire is not a rest.",
++      "Use a low-sided litter pan inside the enclosure, sized so the rabbit can enter, turn, and use it comfortably. Secure it against tipping and choose rabbit-safe, absorbent litter.",
++      "Avoid clumping clay litter and cedar products. Remove soiled litter frequently and keep the pan and surrounding floor dry; ammonia and damp bedding can harm respiratory and skin health.",
++      "Do not feed droppings from the pan. Cecotropes are normally eaten directly by the rabbit. Repeatedly finding uneaten soft clusters can have several causes, including diet, weight, or illness; ask a rabbit-savvy vet if it persists.",
+     ],
+   },
+   roof: {
+     title: "A real roof over the wire",
+     body: [
+       "The sheet draws a gable along the length, metal or shingles, with overhang so rain does not blow straight through the welded wire. A shed roof is just as honest if you would rather not cut a ridge. Keep the wire ceiling either way.",
+-      "Shade is not optional. Rabbits die of heat long before they die of cold. Above about 80°F, frozen bottles and moving air matter more than another scoop of feed. A wire top in full sun is not a roof.",
+-      "Cold they can take if they are dry, out of the wind, and buried in hay. Wet plus wind is the killer, not the thermometer.",
++      "Shade is not optional. Long exposure above about 80°F can make rabbits sick. Move them to a cooler, well-ventilated place during heat; frozen bottles may help, but do not replace shade, fresh water, or veterinary care if they show distress.",
++      "Outdoor housing needs dry shelter, protection from wind and predators, unfrozen water, and frequent checks. Bring rabbits indoors during severe cold or heat; acclimation and individual health matter.",
+     ],
+   },
+   nest: {
+-    title: "The only solid floor in the plan",
++    title: "Nest box for the litter",
+     body: [
+-      "Newborn kits slip through 1/4 inch mesh. The nest box is plywood, solid on the bottom, with a doorway and a 4 inch sill so they do not wander out before their eyes open around day 10.",
++      "The nest box is plywood with a solid bottom, a doorway, and a 4 inch sill to help keep newborn kits in the nest.",
+       "Hang it on day 28 after breeding, full of straw and hay. The doe adds fur. You mostly stay out. Gestation is about 31 days. She may kindle at night and only nurse once or twice a day. An empty-looking box in the afternoon can be normal.",
+-      "A chilled, scattered litter in the morning is not normal. Warm live kits in your hands and rebuild the nest. The dropping tray does not run under this box. Urine in a nest is a bedding change.",
++      "Check the nest and kits briefly each day. Keep bedding dry and seek experienced rabbit-care or veterinary help if kits are cold, injured, or not thriving.",
+     ],
+   },
+ };
+@@ -392,7 +358,6 @@ export function isPart(value: unknown): value is PartId {
+     value === "sides" ||
+     value === "top" ||
+     value === "tray" ||
+-    value === "rest" ||
+     value === "roof" ||
+     value === "nest"
+   );
+@@ -400,16 +365,16 @@ export function isPart(value: unknown): value is PartId {
+ 
+ export const FALL_STEPS = [
+   {
+-    title: "They fall through",
+-    body: "Hard pellets hit the 1/4 inch mesh and leave the room. The rabbit is not standing in yesterday.",
++    title: "Give feet a safe surface",
++    body: "Use a solid, dry, non-slip floor. Wire flooring can injure feet and contribute to sore hocks.",
+   },
+   {
+-    title: "The tray is outside",
+-    body: "The pan is part of the hutch and outside the cage. Three inches of air under the mesh, so the pile never climbs back up.",
++    title: "Keep the litter pan inside",
++    body: "Place a low-sided, secure litter pan where the rabbit can enter and turn comfortably. Clean it regularly.",
+   },
+   {
+-    title: "You dump, you don't serve",
+-    body: "Once a day the tray slides out. You do not feed it back. Cecotropes were eaten at the source, usually before you were up.",
++    title: "Keep the living area dry",
++    body: "Remove soiled litter often, refresh bedding as needed, and check the rabbit's feet and rear during daily care.",
+   },
+ ];
+ 
+@@ -418,7 +383,7 @@ export const CHAPTERS: { id?: string; title: string; paragraphs: string[]; bulle
+     title: "Hay first, then a measured pellet",
+     paragraphs: [
+       "Grass hay is the diet: timothy, orchard, meadow. It should be in front of them all day. Teeth and guts both depend on it. Alfalfa is for growers and nursing does, not for a fat adult buck who already skips his cecotropes.",
+-      "A workable adult measure is about 1/4 cup of plain pellets per 5 pounds of rabbit, once a day. If the body is rounding and soft clusters are being left behind, cut the pellets. Do not cut the hay.",
++      "A common starting guide for a healthy adult is about 1/4 cup of plain pellets per 5 pounds daily, but needs vary with breed, age, body condition, health, and pellet type. Ask a rabbit-savvy vet to adjust the amount. If the body is rounding or soft clusters are repeatedly left uneaten, arrange a diet and health check; do not cut hay.",
+       "Nursing does and fryer-age growers need more: alfalfa hay and a grower pellet available through most of the day. A doe with a litter can drink a quart and more. Check the bottle at noon.",
+     ],
+   },
+@@ -426,7 +391,7 @@ export const CHAPTERS: { id?: string; title: string; paragraphs: string[]; bulle
+     title: "Water, weather, and the hours you actually show up",
+     paragraphs: [
+       "Fresh water every day. In a freeze, swap bottles or break the ice in a crock morning and night. In heat, a second check is not fussiness.",
+-      "Above about 80°F, rabbits are in danger. Get the hutch into deep shade, give them frozen water bottles and a cool tile, and keep air moving. Signs of heatstroke: fast breathing, a wet nose, a limp or floppy body, very hot ears. Move the rabbit somewhere cool, wet the ears with cool (not ice-cold) water, and call a vet right away. Never dunk a rabbit in ice water. Below freezing they are fine if the coat is dry and the wind cannot cut through a solid back. Stuff extra hay in. Do not close the hutch into an airtight box.",
++      "Above about 80°F, rabbits are especially at risk. Move them to a cooler, well-ventilated place and provide shade and fresh water. Heatstroke signs include stretching out and rapid breathing; weakness or collapse is an emergency. If you suspect heatstroke, wet the ears with cool water, place the rabbit near a fan, and call a veterinarian or emergency clinic immediately. Never dunk a rabbit in ice water. During cold weather, provide dry shelter, protection from wind and predators, unfrozen water, and frequent checks; individual health and acclimation matter.",
+     ],
+   },
+   {
+@@ -441,14 +406,14 @@ export const CHAPTERS: { id?: string; title: string; paragraphs: string[]; bulle
+   {
+     title: "When it is not a cleaning problem",
+     paragraphs: [
+-      "No hard pellets for half a day, a hunched sit, teeth grinding, hay refused: that can be gut stasis. It is an emergency, not a tray you forgot.",
+-      "Soft clusters smeared on the mesh or matted on the hindquarters mean the rabbit produced cecotropes and did not eat them. Too many pellets, a body too round to turn, a sore hock, or teeth that hurt. A bright rabbit still eating hay can be steered with diet. A quiet one needs a vet.",
++      "A rabbit that stops eating or passing droppings, sits hunched, grinds its teeth, or refuses hay needs prompt veterinary advice. Do not wait for a 12-hour mark if the rabbit is unwell.",
++      "Repeated soft clusters left uneaten or stuck on the hindquarters can be linked to diet, weight, pain, or illness. Keep the area clean and ask a rabbit-savvy vet, especially if appetite, droppings, or behavior changes.",
+     ],
+     bullets: [
+       "Moldy hay, heated grass clippings, anything sprayed",
+-      "Never feed: avocado, chocolate, rhubarb, onion, garlic, leeks, iceberg lettuce, potato or tomato leaves and stems, houseplants, bread, crackers, or seeds and nuts. Fruit and carrots are treats only: a spoonful a day, not a meal. Good daily greens: romaine, cilantro, parsley, dandelion greens.",
++      "Avoid avocado, chocolate, rhubarb, onion, garlic, leeks, potato or tomato leaves and stems, bread, crackers, and seeds or nuts. Do not feed unidentified houseplants. Iceberg lettuce is low in nutrition, so choose darker leafy greens. Introduce new greens gradually; fruit and carrot are occasional treats, not a meal.",
+       "A diet of pellets and no hay",
+-      "Cedar bedding in the cage, or clay litter in the tray",
++      "Cedar products or clumping clay litter",
+     ],
+   },
+   {
+@@ -463,8 +428,8 @@ export const CHAPTERS: { id?: string; title: string; paragraphs: string[]; bulle
+     title: "Health",
+     paragraphs: [],
+     bullets: [
+-      "Gut stasis: no eating or no droppings for 12 hours is an emergency. Call a vet now.",
+-      "RHDV2 (rabbit hemorrhagic disease) kills fast. Ask your vet about the vaccine. Wash hands and change shoes after visiting other rabbits, and do not bring in wild-cut greens from areas with wild rabbits during an outbreak.",
++      "Gut warning: contact a rabbit-savvy vet promptly if a rabbit stops eating or passing droppings, or sits hunched and grinds its teeth. Do not wait for a 12-hour mark if the rabbit is unwell.",
++      "RHDV2 (rabbit hemorrhagic disease) can be fatal. Ask your veterinarian about current vaccine availability and local risk. Wash hands and change shoes after visiting other rabbits; follow local outbreak guidance for forage and equipment.",
+       "Teeth never stop growing. Unlimited hay wears them down. Drooling, dropping food, or weight loss means a vet check.",
+       "Flystrike: flies lay eggs in a dirty rear end, and maggots can kill in a day. Check every rabbit's bottom daily in warm weather.",
+       "Snuffles: sneezing with white or yellow discharge. Separate the rabbit and see a vet.",
+@@ -480,7 +445,7 @@ export const CHAPTERS: { id?: string; title: string; paragraphs: string[]; bulle
+     paragraphs: [],
+     bullets: [
+       "Process quickly and humanely. Learn from an experienced person or your county extension office first.",
+-      "Wear gloves when cleaning rabbits. Wild and sometimes domestic rabbits can carry tularemia, a disease that infects people through cuts. Do not process a rabbit that seemed sick. Throw out a liver with white spots.",
++      "Wear disposable gloves when handling carcasses and use careful hand and surface hygiene. Tularemia can infect people through skin breaks or contaminated material. Do not process a rabbit that appeared sick; ask a veterinarian or local public-health authority how to handle it.",
+       "Cook rabbit meat to 160°F.",
+       "Wash hands, knives, and boards with hot soapy water.",
+     ],
+@@ -501,7 +466,7 @@ export const START_STEPS = [
+   "Give daily exercise space.",
+   "Keep them shaded and below 80°F.",
+   "Handle them with the back end supported.",
+-  "No eating or no droppings for 12 hours means call the vet.",
++  "If a rabbit stops eating or passing droppings, contact a rabbit-savvy vet promptly.",
+ ];
+ 
+ export const GLOSSARY: { term: string; def: string }[] = [
+diff --git a/src/routes/__root.tsx b/src/routes/__root.tsx
+index fe3f07d..917652e 100644
+--- a/src/routes/__root.tsx
++++ b/src/routes/__root.tsx
+@@ -14,7 +14,7 @@ export const Route = createRootRoute({
+       {
+         name: "description",
+         content:
+-          "A free rabbit raising guide and hutch plans: quarter-inch mesh floors, 1/2 by 1 inch welded wire, and a dropping tray under the cage.",
++          "A free rabbit raising guide with husbandry basics and hutch plans featuring solid, non-slip floors, secure construction, and litter pans.",
+       },
+       { name: "theme-color", content: "#f3eee4" },
+     ],
+diff --git a/src/routes/index.tsx b/src/routes/index.tsx
+index 858547f..1016aa7 100644
+--- a/src/routes/index.tsx
++++ b/src/routes/index.tsx
+@@ -52,12 +52,11 @@ function Home() {
+       <main id="top">
+         <section className="mx-auto grid max-w-6xl items-end gap-8 px-4 py-10 md:px-6 md:py-14 lg:grid-cols-12">
+           <div className="lg:col-span-6">
+-            <p className="text-sm font-semibold text-clay">Quarter-inch floor. 1/2 by 1 wire. Tray underneath.</p>
+-            <h1 className="mt-3 max-w-xl text-4xl text-ink md:text-5xl">The bathroom goes under the floor.</h1>
++            <p className="text-sm font-semibold text-clay">Solid floor. Secure hutch. Litter pan inside.</p>
++            <h1 className="mt-3 max-w-xl text-4xl text-ink md:text-5xl">Start with a safe floor.</h1>
+             <p className="mt-4 max-w-prose text-lg text-muted">
+-              A hutch is the whole house, so the droppings stay in the house. The mesh lets the waste out. The
+-              tray catches it outside the room the rabbit stands in. The part they still need to eat never had to
+-              touch that tray.
++              A hutch needs a dry, non-slip floor that protects a rabbit's feet. Put an easy-clean litter pan
++              inside, and give the rabbit daily exercise in a larger safe area.
+             </p>
+             <a
+               href="#plans"
+@@ -69,13 +68,13 @@ function Home() {
+           <figure className="lg:col-span-6">
+             <img
+               src="/images/hutch-hero.jpg"
+-              alt="Cedar hutch with wire sides, a metal roof, and a galvanized tray pulled out underneath."
++              alt="A secure outdoor hutch with wire sides, a solid roof, and a solid floor."
+               className="aspect-video w-full object-cover"
+               width={1792}
+               height={1008}
+             />
+             <figcaption className="mt-2 text-sm text-muted">
+-              Wire walls, a solid roof over them, and a tray that slides out under the floor.
++              Secure wire walls, weather protection, and a solid floor with a litter pan inside.
+             </figcaption>
+           </figure>
+         </section>
+@@ -83,8 +82,8 @@ function Home() {
+         <section className="bg-moss text-paper">
+           <div className="mx-auto max-w-6xl px-4 py-10 md:px-6 md:py-12">
+             <p className="max-w-3xl font-display text-2xl leading-snug md:text-3xl">
+-              Hard pellets are trash. The soft clusters are a meal, and a healthy rabbit takes that meal off their
+-              own body — not out of the tray.
++              Rabbits eat cecotropes directly. Keep the litter area clean, and ask a rabbit-savvy veterinarian if
++              soft clusters are repeatedly left uneaten.
+             </p>
+           </div>
+         </section>
+@@ -116,23 +115,22 @@ function Home() {
+                   for a yard they are not allowed in.
+                 </p>
+                 <p>
+-                  What changes the cleaning is that the pile is two different products. Only one of them is trash.
++                  Rabbits produce hard fecal pellets and softer cecotropes. Cecotropes are normally eaten directly
++                  from the body; they are not food to collect from a litter pan.
+                 </p>
+                 <p>
+-                  <strong className="font-semibold text-ink">Hard pellets</strong> are the trash. Small, round, dry,
+-                  mostly spent hay. They should leave the room. A solid floor makes you the janitor of every one of
+-                  them, mixed with urine, under the animal.
++                  <strong className="font-semibold text-ink">Hard fecal pellets</strong> are usually small, round,
++                  and dry. Remove them and soiled litter regularly to keep the enclosure clean.
+                 </p>
+                 <p>
+-                  <strong className="font-semibold text-ink">Cecotropes</strong> are the second harvest. Soft,
+-                  glossy, stuck together like a little bunch of grapes, made in the cecum. The rabbit turns and eats
+-                  them straight from the body, usually in the quiet hours. You are not supposed to serve them from a
+-                  pan. If the rabbit is well, you will almost never see one.
++                  <strong className="font-semibold text-ink">Cecotropes</strong> are soft,
++                  glossy clusters made in the cecum. Rabbits usually eat them directly from the body. Repeatedly
++                  finding uneaten clusters can have several causes; discuss persistent or accompanied changes with
++                  a rabbit-savvy vet.
+                 </p>
+                 <p>
+-                  So the tray does not go inside the cage as a buffet. It goes under a quarter-inch mesh floor,
+-                  outside the living space, where the hard pellets fall and you pull the mess out in one slide. The
+-                  meal they still need never had to land there.
++                  Use a solid, dry, non-slip floor and place a low-sided litter pan inside the enclosure. Choose
++                  rabbit-safe litter, clean it regularly, and keep bedding dry.
+                 </p>
+               </div>
+             </div>
+@@ -145,7 +143,7 @@ function Home() {
+                 height={1200}
+               />
+               <figcaption className="mt-2 text-sm text-muted">
+-                A healthy rabbit finishes cecotropes before you see them. Finding them is the signal, not the menu.
++                Cecotropes are normally eaten directly; repeated uneaten clusters can warrant a diet and health check.
+               </figcaption>
+             </figure>
+           </div>
+@@ -162,18 +160,18 @@ function Home() {
+ 
+           <figure className="mt-10 grid items-center gap-6 border border-line bg-sheet p-4 md:grid-cols-2 md:p-6">
+             <img
+-              src="/images/mesh-tray.jpg"
+-              alt="Quarter-inch hardware cloth above a tray holding a few hard pellets."
++              src="/images/hutch-hero.jpg"
++              alt="A secure hutch with a solid floor and a protected roof."
+               className="aspect-mesh w-full object-cover"
+               width={1728}
+               height={1152}
+             />
+             <figcaption>
+-              <h3 className="text-2xl">Why the bottom is a tighter mesh than the walls</h3>
++              <h3 className="text-2xl">Why the living floor should be solid</h3>
+               <p className="mt-3 text-muted">
+-                Sides and top are 1/2 by 1 inch welded wire. It is stronger than chicken wire and keeps raccoons, dogs,
+-                and foxes out. The floor is 1/4 inch hardware cloth so kits cannot slip through and hard pellets still
+-                can. The tray lives in that gap, in the hutch and outside the cage.
++                A solid, non-slip floor helps protect a rabbit's feet. Use sturdy, well-fastened welded wire on
++                exposed sides, a secure latch, a weatherproof roof, and a litter pan inside the living area. Check
++                the hutch often for damage and keep it shaded and ventilated.
+               </p>
+             </figcaption>
+           </figure>
+@@ -184,10 +182,11 @@ function Home() {
+             <p className="text-sm font-semibold text-moss">The bench</p>
+             <h2 className="mt-2 max-w-2xl text-3xl md:text-4xl">Draw the hutch, then cut it</h2>
+             <p className="mt-3 max-w-prose text-muted">
+-              Pick the animal and the plan. The sheet, the shopping list, and the order of work follow. These are
+-              minimum hutch sizes. A rabbit should be able to stand fully upright, stretch out, and take at least
+-              three hops. Every rabbit also needs time every day in a larger, safe exercise pen or rabbit-proofed
+-              room. Pet rabbits can live indoors with a litter box instead of a hutch. See the{" "}
++              Pick the animal and the plan. The sheet, shopping list, and order of work follow. These dimensions
++              are starting points, not universal minimums. Measure the adult rabbit and enlarge the room so it can
++              stand fully upright, stretch out, turn, and move freely. A hutch alone is not a full-time home:
++              provide a much larger secure exercise area with frequent access. Pet rabbits can live indoors with a
++              litter box and exercise space instead of a hutch. See the{" "}
+               <a href="https://rabbit.org" className="font-semibold text-moss underline">
+                 House Rabbit Society
+               </a>{" "}
+@@ -215,10 +214,9 @@ function Home() {
+                   can, put a fence around the hutch area.
+                 </p>
+                 <p>
+-                  We didn't have money for a vet. Once, a baby was very sick, and we had to put it down ourselves
+-                  and bury it deep so no other animal got sick. If you are ever in that spot, call a local rabbit
+-                  rescue, animal shelter, or experienced breeder first. Many will help with a quick, humane end at
+-                  low or no cost.
++                  When a rabbit is very sick, contact a rabbit-savvy veterinarian or emergency clinic for humane
++                  care. A rescue or shelter may help locate veterinary support or discuss available options. Do
++                  not attempt euthanasia at home.
+                 </p>
+                 <p className="font-display text-xl">— Blue</p>
+               </div>
+@@ -289,7 +287,7 @@ function Home() {
+             <p className="text-sm font-semibold text-moss">On this device</p>
+             <h2 className="mt-2 text-3xl md:text-4xl">Bench log</h2>
+             <p className="mt-3 max-w-prose text-muted">
+-              A short list of the work the mesh does not do for you. Mark it as you go. It stays in this browser.
++              A short list of daily care tasks. Mark them as you go; the log stays in this browser.
+             </p>
+             <div className="mt-8">
+               <CareLog />
+@@ -302,7 +300,7 @@ function Home() {
+         <div className="mx-auto max-w-6xl px-4 py-8 md:px-6">
+           <p className="max-w-prose text-sm text-muted">
+             Burrow Bench is a shop and husbandry guide, not veterinary care. A rabbit who will not eat, will not
+-            pass hard pellets, or sits hunched and grinding needs a vet the same day — the tray cannot fix that.
++            pass hard pellets, or sits hunched and grinding needs prompt veterinary advice. Do not wait for a 12-hour mark if the rabbit is unwell.
+             Flemish Giants and other giants want more length than the large plan.
+           </p>
+           <p className="mt-3 max-w-prose text-sm text-muted">

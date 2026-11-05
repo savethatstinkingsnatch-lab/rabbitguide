@@ -30,18 +30,15 @@ export function HutchSheet({ model: m, part, view, onPart }: Props) {
     view === "section" ? "Section through the room" : view === "front" ? "Front elevation" : "Floor plan";
   const caption =
     view === "section"
-      ? "End view. The tray pulls to the front, on the right."
+      ? "End view. The litter pan sits inside on a solid floor."
       : view === "front"
         ? "The face you open. Each door is wire, not wood."
-        : "Looking down. Tight grid is the 1/4 in floor.";
+        : "Looking down. Solid floor with a litter pan in each room.";
 
   return (
     <svg viewBox="0 0 720 520" role="img" aria-label={`${title}. ${caption}`} className="h-auto w-full">
       <rect width="720" height="520" fill={sheet} />
       <defs>
-        <pattern id="mesh14" width="6" height="6" patternUnits="userSpaceOnUse">
-          <path d="M6 0 H0 V6" fill="none" stroke={moss} strokeWidth="0.7" />
-        </pattern>
         <pattern id="wire12" width="14" height="14" patternUnits="userSpaceOnUse">
           <path d="M0 14 L14 0 M0 0 L14 14" stroke={ink} strokeWidth="0.55" opacity="0.4" />
         </pattern>
@@ -73,14 +70,11 @@ function SectionView({ model: m, part, onPart }: Omit<Props, "view">) {
   const ht = 118;
   const floorY = 328;
   const topY = floorY - ht;
-  const gap = 28;
-  const trayH = 32;
-  const pull = 42;
-  const meshT = 10;
-  const trayY = floorY + meshT + gap;
+  const panY = floorY - 32;
+  const panH = 24;
   const selected = (id: PartId) => part === id;
   const roof = roofPoly(x - 26, x + depth + 26, topY - 16, 50);
-  const legTop = trayY + trayH;
+  const legTop = floorY + 8;
 
   return (
     <g fontFamily={sans}>
@@ -95,23 +89,12 @@ function SectionView({ model: m, part, onPart }: Omit<Props, "view">) {
         <rect x={x} y={topY} width={9} height={ht} fill={moss} />
         <rect x={x + depth - 9} y={topY} width={9} height={ht} fill={moss} />
       </g>
-      <g {...hit("rest", part, onPart)}>
-        <rect
-          x={x + 22}
-          y={floorY - 12}
-          width={Math.min(m.restD * s, depth * 0.42)}
-          height={12}
-          fill={selected("rest") ? moss : mossSoft}
-          stroke={moss}
-        />
-      </g>
       <g {...hit("floor", part, onPart)}>
-        <rect x={x} y={floorY} width={depth} height={meshT} fill="url(#mesh14)" stroke={selected("floor") ? moss : ink} />
+        <rect x={x} y={floorY} width={depth} height={12} fill={selected("floor") ? moss : mossSoft} stroke={ink} />
       </g>
       <g {...hit("tray", part, onPart)}>
-        <rect x={x} y={trayY} width={depth + pull} height={trayH} fill={selected("tray") ? claySoft : sheet} stroke={clay} />
-        <rect x={x + 8} y={trayY + 6} width={depth + pull - 20} height={trayH - 12} fill="url(#pellets)" />
-        <rect x={x + depth + pull} y={trayY + 10} width={12} height={12} fill={clay} stroke="none" />
+        <rect x={x + 20} y={panY} width={depth * 0.52} height={panH} rx={3} fill={selected("tray") ? claySoft : sheet} stroke={clay} />
+        <rect x={x + 27} y={panY + 5} width={depth * 0.52 - 14} height={panH - 10} fill="url(#pellets)" />
       </g>
       <line x1={x + 14} x2={x + 14} y1={legTop} y2={legTop + 22} stroke={moss} strokeWidth="4" />
       <line x1={x + 14} x2={x + 14} y1={legTop + 40} y2={448} stroke={moss} strokeWidth="4" />
@@ -121,13 +104,10 @@ function SectionView({ model: m, part, onPart }: Omit<Props, "view">) {
         <Callout x={28} y={topY - 62} text="Weather roof" active={selected("roof")} />
         <Callout x={28} y={topY + 4} text="1/2 × 1 wire top" active={selected("top")} />
         <Callout x={28} y={topY + 56} text={`${m.height} in high`} active={false} />
-        <Callout x={28} y={floorY + 4} text="1/4 in mesh" active={selected("floor")} />
-        <Callout x={28} y={trayY + 20} text="Tray pulls out" active={selected("tray")} tone="clay" />
-        <text x={x + 28} y={floorY - 18} fill={selected("rest") ? moss : muted} fontSize="13">
-          Rest board
-        </text>
+        <Callout x={28} y={floorY + 10} text="Solid floor" active={selected("floor")} />
+        <Callout x={28} y={panY + 16} text="Litter pan inside" active={selected("tray")} tone="clay" />
         <text x={x} y={468} fill={muted} fontSize="14">
-          {m.gap} in gap under the mesh · {m.compartmentD} in deep · {m.stand} in stand, drawn broken
+          {m.compartmentD} in deep · {m.stand} in stand, drawn broken
         </text>
       </g>
     </g>
@@ -160,7 +140,7 @@ function FrontView({ model: m, part, onPart }: Omit<Props, "view">) {
         const bx = x + i * bay;
         const doorW = bay * 0.58;
         const doorX = bx + (bay - doorW) / 2;
-        const doorH = ht * 0.72;
+        const doorH = ht * 0.56;
         return (
           <g key={i} {...hit("sides", part, onPart)}>
             <rect x={bx} y={topY} width={bay} height={ht} fill="url(#wire12)" stroke={selected("sides") ? moss : ink} />
@@ -184,16 +164,16 @@ function FrontView({ model: m, part, onPart }: Omit<Props, "view">) {
         </g>
       ) : null}
       <g {...hit("floor", part, onPart)}>
-        <rect x={x} y={floorY} width={livingW} height={8} fill="url(#mesh14)" stroke={selected("floor") ? moss : ink} />
+        <rect x={x} y={floorY} width={livingW} height={8} fill={selected("floor") ? moss : mossSoft} stroke={ink} />
       </g>
       <g {...hit("tray", part, onPart)}>
         {Array.from({ length: m.trayCount }, (_, i) => (
           <rect
             key={i}
             x={x + i * bay + 8}
-            y={floorY + 36}
+            y={floorY - 29}
             width={Math.max(12, bay - 16)}
-            height={24}
+            height={20}
             fill={claySoft}
             stroke={clay}
             strokeWidth={selected("tray") ? 3 : 1.5}
@@ -214,7 +194,7 @@ function FrontView({ model: m, part, onPart }: Omit<Props, "view">) {
           </text>
         ) : null}
         <text x={36} y={470} fill={muted} fontSize="14">
-          {m.livingL} in of 1/4 in floor · {m.trayCount} tray{m.trayCount > 1 ? "s" : ""} under it · {m.height} in high
+          {m.livingL} in of solid floor · {m.trayCount} litter pan{m.trayCount > 1 ? "s" : ""} inside · {m.height} in high
         </text>
       </g>
     </g>
@@ -236,8 +216,6 @@ function FloorView({ model: m, part, onPart }: Omit<Props, "view">) {
       {Array.from({ length: m.compartments }, (_, i) => {
         const bx = x + i * bay;
         const gapW = i < m.compartments - 1 ? 8 : 0;
-        const restW = Math.min(m.restL * s, (bay - gapW) * 0.55);
-        const restH = Math.min(m.restD * s, depth * 0.42);
         return (
           <g key={i}>
             <g {...hit("floor", part, onPart)}>
@@ -246,19 +224,20 @@ function FloorView({ model: m, part, onPart }: Omit<Props, "view">) {
                 y={y}
                 width={bay - gapW}
                 height={depth}
-                fill="url(#mesh14)"
+                fill={selected("floor") ? moss : mossSoft}
                 stroke={selected("floor") ? moss : ink}
               />
             </g>
             {gapW ? <rect x={bx + bay - gapW} y={y} width={gapW} height={depth} fill={moss} /> : null}
-            <g {...hit("rest", part, onPart)}>
+            <g {...hit("tray", part, onPart)}>
               <rect
-                x={bx + 12}
-                y={y + 12}
-                width={restW}
-                height={restH}
-                fill={selected("rest") ? moss : mossSoft}
-                stroke={moss}
+                x={bx + bay * 0.12}
+                y={y + depth * 0.52}
+                width={bay * 0.42}
+                height={depth * 0.32}
+                rx={4}
+                fill={selected("tray") ? claySoft : sheet}
+                stroke={clay}
               />
             </g>
             <g {...hit("sides", part, onPart)}>
@@ -285,16 +264,11 @@ function FloorView({ model: m, part, onPart }: Omit<Props, "view">) {
           />
         </g>
       ) : null}
-      <g {...hit("tray", part, onPart)}>
-        <rect x={x} y={y + depth + 36} width={livingW} height={16} fill={claySoft} stroke={clay} strokeWidth={selected("tray") ? 3 : 1.5} />
-      </g>
       <g pointerEvents="none">
         <text x={x} y={y - 16} fill={muted} fontSize="14">
           Back · {m.livingL} in long · {m.compartmentD} in deep
         </text>
-        <text x={x + 18} y={y + 28} fill={ink} fontSize="13">
-          Rest
-        </text>
+        <text x={x + 18} y={y + 28} fill={ink} fontSize="13">Solid floor</text>
         {m.nest ? (
           <text x={x + livingW + 10} y={y + depth + 28} fill={moss} fontSize="13">
             Nest, solid floor
@@ -304,7 +278,7 @@ function FloorView({ model: m, part, onPart }: Omit<Props, "view">) {
           Front · door swing
         </text>
         <text x={x} y={y + depth + 70} fill={clay} fontSize="14">
-          Tray footprint, {m.gap} in below the mesh
+          Litter pan inside the room
         </text>
       </g>
     </g>
